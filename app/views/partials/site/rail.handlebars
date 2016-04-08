@@ -1,0 +1,53 @@
+<div class="col--rail-gutter">
+  {{> trending}}
+  <div class="entry">
+    <div class="entry--callout" id="mc_embed_signup">
+        <style>
+            label.error {
+                color:red;
+            }
+        </style>
+      <form id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+        <div id="mc_embed_signup_scroll">
+          <h3 class="h5 alt-txt">Get Top Headlines &amp; Videos Sent Directly to Your Inbox</h3>
+
+          <div class="mc-field-group">
+            <label class="alt-txt" for="mce-EMAIL">Your Email Address</label>
+            <input type="email" value="" name="email" class="required email input--full" id="mce-EMAIL">
+          </div>
+          <div id="mce-responses" class="clear">
+            <div class="response" id="mce-error-response" style="display:none"></div>
+            <div class="response" id="mce-success-response" style="display:none"></div>
+          </div>
+          <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+          <div style="position: absolute; left: -5000px;">
+            <input type="text" name="b_8ad72db3d9bf3cc51a37d4fbe_68134db832" tabindex="-1" value="">
+          </div>
+          <div class="clear">
+            <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn input--full">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="entry entry--post entry--first">
+    {{> twittertimeline}}
+  </div>
+  <div class="entry">
+    <div class="entry--callout">
+      <h3 class="h6"><span class="alt-txt">Add</span>
+        <span class="brand-txt">Newsblock</span>
+        <span class="alt-txt">to Favorites</span></h3>
+      <a class="btn btn--default input--full" id="bookmarkme" href="#" rel="sidebar" title="bookmark this page"><i class="ion-bookmark"></i> Bookmark {{#if section}}{{section}}{{else}}Top Stories{{/if}}
+      </a>
+    </div>
+  </div>
+  <div class="entry">
+    <div class="entry--callout">
+      {{> share}}
+    </div>
+  </div>
+  {{!--<div class="entry align-center">
+    <img style="display: block" class="img-responsive" src="http://placehold.it/300x250">
+  </div>--}}
+</div>

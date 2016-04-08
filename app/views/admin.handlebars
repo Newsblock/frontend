@@ -1,0 +1,64 @@
+<!doctype html><!--[if lt IE 7]><html class="lt-ie9 lt-ie8 lt-ie7 no-js" lang="en"><![endif]--><!--[if IE 7]><html class="lt-ie9 lt-ie8 no-js" lang="en"><![endif]--><!--[if IE 8]><html class="lt-ie9 no-js" lang="en"><![endif]--><!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]--><!--[if gt IE 9]><!-->
+<html class="no-js" lang="en"><!--<![endif]-->
+<body>
+{{#if settings.devmode}}
+    <script src="http://localhost:35729/livereload.js"></script>
+{{/if}}
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="https://cdn.rawgit.com/christianbach/tablesorter/master/jquery.tablesorter.min.js"></script>
+<style>
+    table {  border:1px solid #2b4ea3; }
+    th.headerSortUp {  background-color: #006600; color:#eeeeff }
+    th.headerSortDown {  background-color: #782005; color:#eeeeff }
+    input {margin-bottom: 5px; padding: 2px 3px; width: 209px;}
+</style>
+<input type="text" id="search" placeholder="Type to search">
+<table id="stories" border="1px" cellpadding="0">
+    <thead>
+    <tr><th></th><th>headline</th><th>publisher</th><th>section</th><th>acquired</th><th>published</th>
+        <th>shares</th><th>image</th></tr>
+    </thead>
+    <tbody>
+    {{#each stories}}
+        <tr><td>{{@index}}</td><td><a target="_blank" href="{{url}}">{{{headline}}}</a></td>
+            <td>{{publisher}}</td><td>s:{{section}}</td><td data-sort-value="{{minsfromnow createdAt}}">{{minsfromnow createdAt}}</td>
+            <td>{{minsfromnow published}}</td><td>{{stats.total}}</td><td>{{importedImg}}</td></tr>
+    {{/each}}
+    </tbody>
+</table>
+
+<script>
+    $(function() {
+        $("#stories").tablesorter();
+
+        var $rows = $('#stories tbody > tr');
+        $('#search').keyup(function() {
+            var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+            $rows.show().filter(function() {
+                var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+                return !~text.indexOf(val);
+            }).hide();
+        });
+
+
+
+
+        // example on appending rows...
+        $("#ajax-append").click(function() {
+            $.get("assets/ajax-content.html", function(html) {
+                // append the "ajax'd" data to the table body
+                $("table tbody").append(html);
+                // let the plugin know that we made a update
+                $("table").trigger("update");
+                // set sorting column and direction, this will sort on the first and third column
+                var sorting = [[2,1],[0,0]];
+                // sort on the first column
+                $("table").trigger("sorton",[sorting]);
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<div class="article">
+  <article class="entry--lead" itemscope itemtype="http://schema.org/NewsArticle">
+    <header class="article--layout">
+      <div class="entry--meta-wrapper">
+        <div class="capitalize entry--meta"><a href="/{{#if-equal video.section 'nation'}}{{else}}{{video.section}}{{/if-equal}}">{{#if-equal video.section 'nation'}}Top{{else}}{{video.section}}{{/if-equal}}</a></div>
+        <div class="entry--meta entry--shares entry--meta-last">{{video.stats.viewCount}} views</div>
+        <meta itemprop="interactionCount" content="Views:{{video.stats.viewCount}}"/>
+      </div>
+        <h1 itemprop="headline">{{{video.title}}}</h1>
+        <a style="display: none" class="flutter-headline" href="/v/{{video.videoId}}">{{{video.title}}}</a>
+        <p class="byline">by {{video.channelTitle}} <strong itemprop="publisher">{{video.publisher}}</strong> <time datetime="{{datetime video.publishedAt}}" itemprop="datePublished">{{formatdate video.publishedAt}}</time></p>
+       {{> addthis}}
+    </header>
+      <div itemprop="articleBody">
+        <div class="media--video-embed">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/{{video.videoId}}" frameborder="0" allowfullscreen></iframe>
+        </div>
+          <p class="dek article--layout">{{{video.description}}}</p>
+      </div>
+  </article>
+    {{> disqus}}
+</div>

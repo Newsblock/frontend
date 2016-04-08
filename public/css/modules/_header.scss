@@ -1,0 +1,40 @@
+.header {
+  border-bottom: 1px solid $border-color;
+  margin-left: $pad;
+  margin-right: $pad;
+  background-color: #fff;
+  margin-bottom: emRhythm(3);
+
+  @media (min-width: $screen-min-xxs) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .layout--header {
+    padding-top: 0;
+  }
+
+  @media (min-width: $screen-min-xxs) {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    .layout--wrapper {
+      margin-left: $menu-width;
+      border-right: none;
+      border-left: none;
+      border-bottom: none;
+      background-color: #fff;
+    }
+  }
+
+
+}
+
+.layout--main .layout--wrapper {
+  @media (min-width: $screen-min-xxs) {
+    margin-left: $menu-width;
+  }
+
+}

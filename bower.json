@@ -1,0 +1,13 @@
+{
+  "name": "news-feed",
+  "version": "0.0.1",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "devDependencies": {
+    "typesettings": "~2.4.0",
+    "bootstrap-sass": "~3.3.1"
+  }
+}

@@ -1,0 +1,117 @@
+<!doctype html><!--[if lt IE 7]><html class="lt-ie9 lt-ie8 lt-ie7 no-js" lang="en"><![endif]--><!--[if IE 7]><html class="lt-ie9 lt-ie8 no-js" lang="en"><![endif]--><!--[if IE 8]><html class="lt-ie9 no-js" lang="en"><![endif]--><!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]--><!--[if gt IE 9]><!-->
+<html class="no-js" lang="en"><!--<![endif]-->
+{{>siteHead}}
+<body>
+<div class="main">
+  <div class="layout--main container container--center">
+    {{> siteMenu}}
+    <div class="header">
+      <div class="layout--header container container--center">
+        <div class="layout--wrapper">
+          {{> siteHeader}}
+        </div>
+      </div>
+    </div>
+    <div class="layout--wrapper">
+      <div class="grid layout--content">
+        <div class="col--main">
+          {{{@body}}}
+        </div>
+        <div class="col--rail">
+          {{> siteRail}}
+        </div>
+      </div>
+    </div>
+    {{> siteFooter}}
+  </div>
+</div>
+{{> siteAfterfooter}}
+
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+
+{{#if settings.devmode}}
+    <script src="/scripts/main.js"></script>
+{{else}}
+    <script>{{> mainjs}}</script>
+{{/if}}
+
+{{#if-equal section 'AMP'}}
+    <script>
+        $(function () {
+
+            function preLoadEntry(entry) {
+                var $entry = $(entry);
+                var ampUrl = '/api/amp?urlpath='+ $entry.data('ampurl');
+                var storyUrl = $entry.data('url');
+                var storyId = $entry.data('storyid');
+                console.log('## entry:', storyId);
+
+                var mainWidth = '100%';
+                var iframe = document.createElement('iframe');
+                iframe.width = mainWidth;
+                iframe.id = 'iframe_'+storyId;
+                iframe.style.backgroundColor='#fff';
+                iframe.setAttribute('frameborder','0');
+                iframe.height = '100%';
+                iframe.src = ampUrl;
+
+                if($(window).width() > 539) {
+                    mainWidth = $('.col--main').width();
+                    iframe.width = mainWidth;
+                    $entry.append('<div class="amp-container" id="amp-container_'+ storyId +'"></div>')
+                }
+                else { // x-small BP
+                        $('body').append('<div class="amp-container" id="amp-container_'+ storyId +'"></div>');
+                }
+
+                var $container = $('#amp-container_'+ storyId);
+                $container.hide().css('position', 'fixed').css('top', 0)
+                        .css('width', mainWidth).css('height', $(window).height())
+                        .css('background-color','#fff').css('z-index', 10);
+
+                $container.append('<button class="js-amp-btn btn btn--default full-width">CLOSE [x]</button>');
+
+                $(document).on('touchleave click','.js-amp-btn', function () {
+                    $container.hide();
+                    history.replaceState({page:'/m'}, "front page", '/m');
+                });
+
+                $container.append(iframe);
+
+                $entry.on('touchleave click', function (e) {
+                    e.preventDefault();
+                    history.pushState({page:storyUrl}, "story page", storyUrl);
+                    $container.toggle();
+                });
+
+            }  /// end
+
+            // preload entries
+            $('.amp-entry').each(function (idx, entry) {
+                if(idx < 5) {
+                    console.log('preload item:', idx);
+                    preLoadEntry(entry);
+                }
+
+            });
+
+            $(window).on('popstate', function () {
+                console.log('## popstate location:', location);
+                $('.amp-container').hide();
+                if(location.pathname.indexOf('/s/') > -1) {
+                    console.log('navigate to story page:');
+                    location.href = location.href; //refreshes the page
+                }
+            });
+        });
+    </script>
+{{/if-equal}}
+
+<noscript>
+    <div style="display:none;">
+        <img src="//pixel.quantserve.com/pixel/p-aaMptX6PjSV-c.gif" border="0" height="1" width="1" alt="Quantcast"/>
+    </div>
+</noscript>
+
+</body>
+</html>

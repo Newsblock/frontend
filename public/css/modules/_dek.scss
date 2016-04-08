@@ -1,0 +1,5 @@
+.dek {
+  color: $light-grey;
+  margin-bottom: emRhythm(2, $ms-up2);
+  @include setType(5, $ms-up2);
+}

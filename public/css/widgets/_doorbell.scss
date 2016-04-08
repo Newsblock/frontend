@@ -1,0 +1,17 @@
+.doorbell-button {
+  position: static !important;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font-weight: 400;
+  width: 100%;
+  border-radius: 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  @media (min-width: $screen-min-xxs) {
+    text-align: left;
+  }
+}

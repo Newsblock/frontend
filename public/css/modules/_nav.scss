@@ -1,0 +1,99 @@
+.wf-active .nav {
+  font-family: $font-sans;
+}
+
+.nav {
+  list-style: none;
+  margin-left: 0;
+  font-family: 'Helvetica Neue', Calibri, Helvetica, Arial, sans-serif;
+  margin-bottom: 0;
+  padding-left: 0;
+  @include setType(3, $ms-down1);
+
+  a,
+  button,
+  .nav--txt,
+  #doorbell-button {
+    padding-left: $pad;
+    color: $blue;
+    padding-top: emRhythm(3, $ms-down1);
+    padding-bottom: emRhythm(3, $ms-down1);
+    display: block;
+    border-bottom: 1px solid $nav-border;
+    background-color: $site-bg-color;
+    cursor: pointer;
+    font-weight: bold;
+
+    &.is-first {
+      margin-top: 1px;
+    }
+
+    &.is-active {
+      color: $text-color;
+      background-color: #fff;
+    }
+
+    &:link,
+    &:visited {
+
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: $text-color;
+      text-decoration: none;
+    }
+
+    &:active {
+      color: darken(#fff, 10%);
+      background-color: $text-color;
+    }
+
+    @media (min-width: $screen-min-xxs) {
+      padding-top: emRhythm(2, $ms-down1);
+      padding-bottom: emRhythm(2, $ms-down1);
+      border-bottom: none;
+    }
+  }
+
+  .nav--txt-static {
+    cursor: default;
+  }
+
+  .nav--txt-static:hover {
+    color: darken($site-bg-color, 40%);
+    background-color: transparent;
+    cursor: text;
+  }
+}
+
+.nav--sub {
+  margin-bottom: 0;
+  color: darken($site-bg-color, 40%);
+
+  a,
+  .nav--txt,
+  #doorbell-button{
+    color: darken($site-bg-color, 40%);
+  }
+}
+
+.nav--menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.2s linear;
+
+  &.is-open {
+    max-height: 600px;
+    overflow: auto;
+
+    @media (min-width: $screen-min-xxs) {
+      max-height: none;
+    }
+  }
+
+  @media (min-width: $screen-min-xxs) {
+    max-height: none;
+    overflow: auto;
+  }
+}

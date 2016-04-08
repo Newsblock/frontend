@@ -1,0 +1,14 @@
+<div class="col--alpha">
+  <div class="col--alpha-gutter">
+    <div id="latest">
+      <div class="heading--group">
+        <h3 class="h5 heading--alt heading--alt-headlines">Latest <i class="ion-clock"></i></h3>
+      </div>
+      {{#each-slice stories 0 40}}
+          <div class="amp-entry" data-ampurl="{{ampurl}}" data-storyid="{{_id}}" data-url="/s/{{_id}}">
+              {{> entry}}
+          </div>
+      {{/each-slice}}
+    </div>
+  </div>
+</div>

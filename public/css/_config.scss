@@ -1,0 +1,63 @@
+// Typesettings
+$load-typesetted: false;
+$font-serif: 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+$font-display-serif: 'Source Serif Pro', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+$font-sans: 'Helvetica Neue', Calibri, Helvetica, Arial, sans-serif;
+$paragraph-indent: false;
+$paragraph-justify: false;
+$blockquote-right: false;
+$base-font-size: 16px;
+$base-line-multi: 4;
+$ms-ratio: 1.15;
+
+// Colors
+$yellow: #fefac1;
+$darkest-blue: #0b132b;
+$darker-blue: #1c2541;
+$dark-blue: #3a506b;
+$blue: #4599d0;
+$light-green: #6fffe9;
+
+
+$text-color: #333333;
+$aside-txt-color:lighten($text-color, 30%);
+$lightest-grey: #f3f3f3;
+$grey: #333333;
+$light-grey: lighten($grey, 20%);
+$lighter-grey: darken($lightest-grey, 10%);
+
+$highlight-color: $yellow;
+$blockquote-accent-color: lighten($text-color, 70%);
+$site-bg-color: darken(#fafafa, 1%);
+$link-color: $blue;
+$link-color-active: darken($link-color, 10%);
+$border-color: lighten(#cccccc, 5%);
+$nav-border: $border-color;
+$accent-color: lighten($text-color, 30%);
+$menu-border-color: $grey;
+$twitter-blue: #55acee;
+$facebook-blue: #3b5998;
+$google-red: #dd4b39;
+$nav-txt: lighten(#171717, 70%);
+
+$menu-width: 150px;
+$rail-width: 336px;
+$container-lg: 1336px;
+$pad: 12px;
+
+// Breakpoints
+$screen-min-height: 700px;
+$screen-min-xxs: 541px;
+$screen-xs-min: 820px;
+$screen-sm-min: 900px;
+$screen-md-min: 1051px;
+$screen-lg-min: 1200px;
+$screen-xs-max: ($screen-sm-min -1);
+$screen-sm-max: ($screen-md-min - 1);
+$screen-md-max: ($screen-lg-min - 1);
+
+//Animation
+$trans-dur: 0.16s;
+$trans-ease: linear;
+
+$btn-border: 3px;

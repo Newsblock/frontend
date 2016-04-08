@@ -1,0 +1,408 @@
+$ms-up5: $ms-up4 * $ms-ratio;
+$ms-up6: $ms-up5 * $ms-ratio;
+$ms-up7: $ms-up6 * $ms-ratio;
+
+//==============================================================================
+// Default Type Styles
+//==============================================================================
+
+::selection {
+  background-color: $highlight-color;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-weight: 400;
+  color: $text-color;
+  position: relative;
+  -moz-font-feature-settings:"lnum" 1;
+  -moz-font-feature-settings:"lnum=1";
+  -ms-font-feature-settings:"lnum" 1;
+  -o-font-feature-settings:"lnum" 1;
+  -webkit-font-feature-settings:"lnum" 1;
+  font-feature-settings:"lnum" 1;
+  font-family: $font-serif;
+
+  @media (min-width: $screen-min-xxs) {
+    background-color: $site-bg-color;
+    padding-bottom: $pad * 2;
+  }
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-weight: 600;
+  font-style: normal;
+  word-wrap: break-word;
+
+  a:link,
+  a:visited {
+    transition: color 0.3s linear;
+    color: $text-color;
+  }
+
+  a:hover,
+  a:active {
+    color: $link-color;
+    text-decoration: none;
+  }
+}
+
+// [1] Applies a margin bottom that is a multiple of the vertical grid in EMs.
+// The first argument is the font size context and the second is multiple of the
+// vertical grid unit.
+// [2] Sets the type to one of the modular scale values and the second argument
+// sets a unitless line-height as a multiple of the vertical grid.
+// [3] A generic media query for tablet size ranges.
+// [4] Applies a margin bottom that is the same vertical grid value as the mobile
+// first rule.
+// [5] Sets the type to one of the modular scale values and the second argument
+// sets a unitless line-height as a multiple of the vertical grid.
+h1, .h1 {
+  margin-bottom: emRhythm(1, $ms-up5); // [1]
+  @include setType(5.5, $ms-up5, $silent: true); // [2]
+
+  @media (min-width: $screen-sm-min) {
+    margin-bottom: emRhythm(1, $ms-up5); // [4]
+    @include setType(5.5, $ms-up5, $silent: true); // [5]
+  }
+
+  @media (min-width: $screen-md-min) {
+    margin-bottom: emRhythm(1, $ms-up7);
+    @include setType(7.5, $ms-up7, $silent: true);
+  }
+}
+
+h2, .h2 {
+  margin-bottom: emRhythm(0.5, $ms-up2, $silent: true);
+  @include setType(4, $ms-up2,  $silent: true);
+
+  @media (min-width: $screen-sm-min) {
+    margin-bottom: emRhythm(0.5, $ms-up3, $silent: true);
+    @include setType(5, $ms-up3)
+  }
+
+  @media (min-width: $screen-md-min) {
+    margin-bottom: emRhythm(0.5, $ms-up4, $silent: true);
+    @include setType(5.5, $ms-up4, $silent: true);
+  }
+}
+
+h3, .h3 {
+  margin-bottom: emRhythm(1, $ms-up1);
+  @include setType(4, $ms-up1);
+
+  @media (min-width: $screen-md-min) {
+    margin-bottom: emRhythm(1, $ms-up2);
+    @include setType(5, $ms-up2);
+  }
+}
+
+h4, .h4 {
+  margin-bottom: emRhythm(0.5, $silent: true);
+  @include setType(3.5, $silent: true);
+
+  @media (min-width: $screen-lg-min) {
+    margin-bottom: emRhythm(0.5, $ms-up1, $silent: true);
+    @include setType(4.25, $ms-up1, $silent: true);
+  }
+}
+
+h5, .h5,
+h6, .h6 {
+  margin-bottom: emRhythm(0.5, $silent: true);
+  @include setType(3.5, $silent: true);
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: emRhythm($base-line-multi);
+  padding-top: 0;
+  padding-bottom: 0;
+
+  @media (min-width: 43.75em) {
+    @if $paragraph-justify {
+      text-align: justify;
+    }
+  }
+}
+
+@if $paragraph-indent {
+  p + p,
+  blockquote + p {
+    margin-top: emRhythm($base-line-multi * -1);
+    text-indent: emRhythm($base-line-multi);
+  }
+}
+
+small,
+.font-small {
+  @include setType(3, $ms-down1);
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: bold;
+}
+
+blockquote {
+  margin-top: emRhythm($base-line-multi);
+  margin-bottom: emRhythm($base-line-multi);
+  margin-right: 0;
+  margin-left: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: emRhythm($base-line-multi);
+  font-weight: 700;
+  font-family: $font-display-serif;
+  position: relative;
+  clear: both;
+
+  p {
+    text-transform: uppercase;
+    font-family: $font-sans;
+    color: $google-red;
+    margin-bottom: emRhythm(2);
+    @include setType(5, $ms-up1);
+  }
+
+  footer {
+    font-weight: 400;
+    font-family: $font-sans;
+    @include setType(4, $ms-down1);
+    cite {
+      font-style: normal;
+      &:before {
+        content: "";
+        background: $blockquote-accent-color;
+        height: 1px;
+        width: 1.5em;
+        vertical-align: middle;
+        display: inline-block;
+        margin-right: 0.5em;
+        margin-left: 0.5em;
+      }
+    }
+  }
+}
+
+.pullquote {
+  @media (min-width: $screen-sm-min) {
+    width: 50%;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .pullquote.left {
+    float: left;
+    margin-right: emRhythm($base-line-multi);
+    text-align: right;
+    padding-right: emRhythm($base-line-multi);
+    padding-left: 0;
+  }
+
+  .pullquote.right {
+    float: right;
+    margin-left: emRhythm($base-line-multi);
+  }
+}
+
+pre,
+code {
+  font-family: $font-mono;
+}
+
+ol,
+ul,
+dl {
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: emRhythm($base-line-multi);
+  padding-left: emRhythm(5);
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+ul ul,
+ol ol,
+dl dl {
+  margin-bottom: 0;
+}
+
+ul {
+  list-style: disc;
+}
+
+ol {
+  list-style: decimal;
+}
+
+// [1] https://developer.mozilla.org/en-US/docs/CSS/font-variant
+abbr {
+  font-variant: small-caps; // [1]
+  font-weight: bold;
+  text-transform: lowercase;
+}
+
+// Cursor changed to a question mark when it has a title
+abbr[title]:hover {
+  cursor: help;
+}
+
+// Creates horizontal rules that obey the baseline.
+// [1] Zero outs the user agent border
+hr {
+  margin-top: emRhythm(4);
+  margin-bottom: 0;
+  border: none; // [1]
+  border-top-color: $text-color;
+  border-top-style: solid;
+  @include rhythmBorderTop(1px, 4);
+}
+
+a:link,
+a:visited {
+  color: $link-color;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  text-decoration: underline;
+}
+
+a:active {
+  color: $link-color-active;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: emRhythm($base-line-multi);
+  @include setType(4, $ms-down1)
+}
+th, td {
+  padding: 0.25rem;
+  text-align: left;
+  border: 1px solid $blockquote-accent-color;
+}
+tbody tr:nth-child(odd) {
+  background: #eee;
+}
+
+mark {
+  background-color: $yellow;
+}
+
+figure {
+  margin-left: 0;
+  margin-bottom: emRhythm($base-line-multi);
+}
+
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+textarea,
+select {
+  height: $base-vertical-unit * 6;
+  padding: 6px $base-vertical-unit; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  border: 3px solid lighten($text-color, 60%);
+  box-shadow: none;
+  box-sizing: border-box;
+  font-family: $font-sans;
+  font-weight: 400;
+  vertical-align: middle;
+}
+
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+textarea {
+  min-height: $base-vertical-unit * 9;
+  padding-top: $base-vertical-unit;
+  padding-bottom: $base-vertical-unit;
+}
+
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="week"]:focus,
+input[type="time"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+textarea:focus,
+select:focus {
+  border: 3px solid $link-color;
+  outline: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+label,
+legend {
+  color: $light-grey;
+  display: block;
+  font-weight: 400;
+  font-family: $font-serif;
+  margin-bottom: emRhythm(1, $ms-down1);
+  @include setType($base-line-multi, $ms-down1);
+}
+
+fieldset {
+  padding: 0;
+  border-width: 0;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline;
+}
+
+input[type="file"] {
+  padding-left: 0;
+  padding-right: 0;
+}

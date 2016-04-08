@@ -1,0 +1,108 @@
+.clearfix {
+  @include clearfix;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.display-font {
+  font-family: $font-display-serif;
+}
+
+.list--sans {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.pad-bottom {
+  margin-bottom: emRhythm(4);
+}
+
+.hidden-xs {
+  display: none;
+
+  @media (min-width: $screen-sm-min) {
+    display: block;
+  }
+}
+
+.is-block {
+  display: block;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.screen-reader-txt {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+.alt-txt {
+  font-family: $font-sans;
+}
+
+.brand-txt {
+  font-family: $font-display-serif;
+  font-weight: 800;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+
+.align-center {
+  text-align: center;
+}
+
+.intrinsic-wrapper {
+  /*
+    This element must maintain position: relative.
+    The padding-bottom creates the proper ratio.
+    Examples:
+        4:3 = padding-bottom: 75%;
+        16:9 = padding-bottom: 56.25%;
+        (does not necessarily have to be "common ratios",
+        it can be based off image dimensions of the design)
+   */
+
+  height: 0;
+  /*padding-bottom: 75%; // if this is a global class, you do not want to define this property. Do it in another class, example .ratio--4x3 */
+  position: relative;
+
+}
+
+.intrinsic-wrapper-element {
+  /*
+    This class needs no further customization,
+    if this class is applied to the elemtent and is contained
+    within .intrinsic > .intrinsic__wrapper > *current element*
+    the element should scale in correct perspective
+   */
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+@include generateRatios(16,9);

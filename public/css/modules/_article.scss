@@ -1,0 +1,45 @@
+.article {
+  margin-right: $pad * -1;
+  padding-top: $pad;
+  padding-bottom: $pad * 2;
+  margin-left: $pad * -1;
+
+  @media (min-width: $screen-sm-min) {
+    margin-right: 0;
+  }
+}
+
+.article--layout,
+.article p,
+.article h3,
+.article h2,
+.article h4,
+.article h5,
+.article h6,
+.article ul,
+.article blockquote {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: $pad * 2;
+  padding-left: $pad * 2;
+}
+
+.article header,
+.article--art {
+  margin-bottom: $pad;
+
+  p {
+    padding-left: 0;
+  }
+}
+
+.article--art {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.article article {
+  margin-bottom: $pad * 4;
+}

@@ -1,0 +1,15 @@
+.trending-stories {
+  .col--rail & {
+    display: none;
+
+    @media (min-width: $screen-xs-min) {
+      display: block;
+    }
+  }
+
+  .col--main & {
+    @media (min-width: $screen-xs-min) {
+      display: none;
+    }
+  }
+}

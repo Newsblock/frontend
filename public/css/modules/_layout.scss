@@ -1,0 +1,92 @@
+.layout--menu {
+  color: lighten($text-color, 30%);
+  margin-bottom: emRhythm(1);
+  z-index: 1;
+
+  @media (min-width: $screen-min-xxs) {
+    width: $menu-width;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-bottom: 0;
+
+    &.affix {
+      position: fixed;
+      top: 0;
+    }
+  }
+
+  @media (min-height: $screen-min-height) and (min-width: $screen-min-xxs) {
+    position: fixed;
+  }
+}
+
+.layout--footer {
+  text-align: center;
+  background-color: $site-bg-color;
+  z-index: 2;
+  @media (min-width: $screen-min-xxs) {
+    width: $menu-width;
+    padding-right: 0;
+    text-align: left;
+    position: absolute;
+    bottom: $pad * 2;
+  }
+
+  @media (min-height: $screen-min-height) and (min-width: $screen-min-xxs) {
+    position: fixed;
+  }
+}
+
+.layout--main {
+  @media (min-width: $screen-min-xxs) {
+    margin-left: $menu-width;
+  }
+}
+
+.layout--content {
+  padding-bottom: $pad * 2;
+
+  @media (min-width: $screen-min-xxs) {
+    margin-top: 51px + $pad;
+  }
+}
+
+.layout--header {
+  padding-top: emRhythm(2);
+
+  .layout--wrapper {
+    padding-right: 0;
+    padding-left: 0;
+
+    @media (min-width: $screen-min-xxs) {
+      padding-top: 16px;
+      padding-bottom: 16px;
+      padding-left: $pad;
+      padding-right: $pad;
+    }
+  }
+}
+
+.layout--main,
+.layout--rail,
+.layout--header {
+  @media (min-width: $screen-sm-min) {
+    vertical-align: top;
+  }
+}
+
+.layout--wrapper {
+  padding-left: $pad;
+  padding-right: $pad;
+  background-color: #fff;
+
+  @media (min-width: $screen-min-xxs) {
+    padding-top: $pad;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    padding-left: $pad;
+    padding-right: $pad;
+  }
+}

@@ -1,0 +1,26 @@
+.icon--play {
+  position: absolute;
+  color: #fff;
+  left: 0;
+  top: 50%; 
+  text-align: center;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+  line-height: 0;
+  font-size: 2em;
+  border-radius: 200px;
+  display: block;
+  
+  @media (min-width: $screen-sm-min) {
+    font-size: 3em;
+  }
+  
+  &:before {
+    line-height: 0 !important;
+    background-color: rgba(#000, 0.6);
+    padding: 0.4em 0.3em 0.4em 0.4em;
+    border-bottom: 3px solid #fff;
+  }
+}

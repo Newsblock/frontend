@@ -1,0 +1,60 @@
+.weather {
+  text-align: right;
+  font-family: $font-sans;
+  display: table-cell;
+  vertical-align: middle;
+  @include setType(2, $ms-down2);
+
+  @media (min-width: $screen-xs-min) {
+    text-align: center;
+    width: $rail-width;
+    @include setType(2, $ms-down1);
+  }
+}
+
+.weather--loc,
+.wi {
+  padding-right: 3px;
+}
+
+.wi {
+  color: orange;
+}
+
+.weather--temp {
+  font-weight: 700;
+
+  i {
+    font-size: 1.3em;
+  }
+}
+
+$night-color: $darker-blue;
+
+// original class name: wi-day-sunny
+.wi-clear-day:before {
+  content: "\f00d";
+}
+
+// original class name: wi-night-clear
+.wi-clear-night:before {
+  content: "\f02e";
+  color: $night-color;
+}
+
+// original class name: wi-windy
+.wi-wind:before {
+  content: "\f021";
+  color: $night-color;
+}
+
+// original class name: wi-day-cloudy
+.wi-partly-cloudy-day:before {
+  content: "\f002";
+}
+
+// original class name: wi-night-cloudy
+.wi-partly-cloudy-night:before {
+  content: "\f031";
+  color: $night-color;
+}

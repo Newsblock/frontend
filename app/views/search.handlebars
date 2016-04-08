@@ -1,0 +1,30 @@
+<div class="col--alpha-gutter">
+  <div id="search-results">
+    <h2 class="demo-zero-out">Search Newsblock</h2>
+    <form action="/search/" class="input_group">
+      <label for="q" id="search_page-label">
+        <span class="screen-reader-txt">Search</span> </label>
+      <input aria-labelledby="search_page-label" id="q" required name="q" type="search" placeholder="Search" value="{{q}}"/>
+      <input class="btn btn--default btn--inline" type="submit" value="Search"/>
+    </form>
+
+    <gcse:searchresults-only>
+    {{#if q}}
+      <div class="search--loading">Loading&hellip;</div>
+    {{/if}}
+    </gcse:searchresults-only>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var cx = '016208984708783791344:ntjdjxcug0q';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+    '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>

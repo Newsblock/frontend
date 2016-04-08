@@ -1,0 +1,21 @@
+.yt-player-wrapper {
+  padding-left: $pad;
+  padding-right: $pad;
+  padding-bottom: $pad;
+  background-color: $text-color;
+  box-shadow: 0 5px 15px rgba(0,0,0,.5);
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  display: none;
+  z-index: 4;
+
+  &.is-open {
+    display: block;
+  }
+
+  iframe {
+    display: block;
+    clear: left;
+  }
+}

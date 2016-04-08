@@ -1,0 +1,31 @@
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin generateRatios($width, $height, $prefix: "ratio-") {
+
+  $class-name: $prefix + $width + "x" + $height;
+
+  .#{$class-name} {
+    padding-bottom: percentage( $height / $width);
+  }
+  // Output example: .ratio-16x9 {}
+}

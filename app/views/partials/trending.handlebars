@@ -1,0 +1,42 @@
+{{#if sections}}
+  <div class="trending-stories">
+    <div class="heading--group">
+      <h3 class="h5 heading--alt heading--alt-first heading--alt-headlines">Trending <i class="ion-chatbubbles"></i></h3>
+
+      <div class="heading--alt heading--alt-anchor">
+        <a href="#latest" class="">Latest <i class="ion-clock"></i></a>
+      </div>
+      <div class="heading--alt heading--alt-anchor">
+        <a href="#videos" class="">Videos <i class="ion-ios-videocam"></i></a>
+      </div>
+    </div>
+    {{#each-limit sections 9}}
+      {{#each-limit leadstories 1}}
+        <div class="entry entry--post" itemscope itemtype="http://schema.org/Article">
+          {{#if importedImg}}
+            <div class="entry--img-sm align-middle">
+                <a {{#if xampurl}} href="/s/{{_id}}" {{else}} href="{{url}}" target="_blank" {{/if}}>
+                  <img class="img-responsive entry--img" src="http://cdn.getnewsblock.com/icons/000000-0.5.png" data-src="{{imgurl this}}" data-image="{{image}}" alt="{{headline}}">
+                </a>
+            </div>
+          {{/if}}
+          <div class="entry--meta-wrapper">
+            <a href="/{{section}}" class="entry--meta entry--section" itemprop="publisher">{{section}}</a>
+          </div>
+          <div class="entry--txt entry--txt-heading">
+            <h4 itemprop="name headline">
+                <a {{#if xampurl}} href="/s/{{_id}}" {{else}} href="{{url}}" target="_blank" {{/if}}>{{{headline}}}</a>
+            </h4>
+            {{> entrymeta}}
+          </div>
+          {{#if summary}}
+            <div class="entry--txt entry--txt-summary entry--txt-summary-collapse">
+              <p>{{{summary}}}</p>
+            </div>
+            {{> jssummarybtn}}
+          {{/if}}
+        </div>
+      {{/each-limit}}
+    {{/each-limit}}
+  </div>
+{{/if}}
