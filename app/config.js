@@ -80,5 +80,6 @@ app.use(function* notFound(next) {
     yield next; // actually no next...
 
     this.status = 404;
-    yield this.render('404-not-found');
+    const model = {meta: {title: '404'}};
+    yield this.render('404-not-found', model);
 });

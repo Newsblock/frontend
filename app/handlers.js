@@ -6,21 +6,22 @@ const www = module.exports = {};
 const lib = require('./../lib/lib');
 
 
-www.index = function*() {
-    try {
-        const json = yield lib.fetch('/api/cover');
-        var model = json;
-        model.meta = this.state.meta;
-        model.section = 'top stories';
-        yield this.render('index', model);
-    } catch (e) {
-        this.throw(e);
-    }
+www.index = function*(next) {
+    const json = yield lib.fetch('/api/cover');
+    if(!json) return yield next;
+
+    var model = json;
+    model.meta = this.state.meta;
+    model.section = 'top stories';
+    yield this.render('index', model);
 };
 
-www.section = function*() {
+www.section = function*(next) {
     var section = this.params.section.toLowerCase();
-    const json = yield lib.fetch('/api/'+section);
+    const json = yield lib.fetch('/api/' + section);
+
+    if(!json) return yield next;
+
     var model = json;
     model.meta = lib.overrideMetaFor(this, 'section', json);
     model.section = section;
@@ -38,14 +39,18 @@ www.privacy = function*() {
 
 
 www.search = function*() {
-    yield this.render('search', {section:'Search'});
+    const title = 'Search for '+ this.query.q;
+    const meta = {title:title, socialTitle: title};
+    yield this.render('search', {section:'Search', meta: meta});
 };
 
 
-www.archive = function*() {
+www.archive = function*(next) {
 
     if(this.params.day) {
         const json = yield lib.fetch('/api/archive/'+ this.params.day);
+        if(!json) return yield next;
+
         const model = json;
         model.meta = lib.overrideMetaFor(this,'archive', json);
         yield this.render('index', model);
@@ -63,6 +68,8 @@ www.story = function*(next) {
 
     try {
         const json = yield lib.fetch('/api/story/'+ this.params.storyid);
+        if(!json) return yield next;
+
         const model = {story: json};
 
         model.meta = lib.overrideMetaFor(this, 'story', json);
@@ -84,6 +91,8 @@ www.video = function*(next) {
 
     try {
         const json = yield lib.fetch('/api/video/'+ this.params.videoid);
+        if(!json) return yield next;
+
         const model = {video: json};
 
         model.meta = lib.overrideMetaFor(this, 'video', json);
@@ -101,7 +110,9 @@ www.video = function*(next) {
 
 www.publisher = function*(next) {
     const publisherDomain = this.params.publisher.toLowerCase();
+
     const json = yield lib.fetch('/api/publisher/'+publisherDomain);
+    if(!json) return yield next;
 
     if(json.stories[0]) {
         json.meta = lib.overrideMetaFor(this, 'publisher', json);
@@ -119,6 +130,8 @@ www.topvideo = function*(next) {
 
     try {
         const json = yield lib.fetch('/api/topvideo');
+        if(!json) return yield next;
+
         const model = {video: json};
 
         model.meta = lib.overrideMetaFor(this, 'video', json);
@@ -138,6 +151,8 @@ www.topstory = function*(next) {
 
     try {
         const json = yield lib.fetch('/api/lead/'+ this.params.section);
+        if(!json) return yield next;
+
         const model = json;
         model.story.url = '/s/'+ model.story._id; // override destination URL
         model.meta = lib.overrideMetaFor(this, 'story', json);
