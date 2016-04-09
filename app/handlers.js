@@ -7,7 +7,7 @@ const lib = require('./../lib/lib');
 
 
 www.index = function*(next) {
-    const json = yield lib.fetch('/api/cover');
+    const json = yield lib.fetch('/cover');
     if(!json) return yield next;
 
     var model = json;
@@ -18,7 +18,7 @@ www.index = function*(next) {
 
 www.section = function*(next) {
     var section = this.params.section.toLowerCase();
-    const json = yield lib.fetch('/api/' + section);
+    const json = yield lib.fetch('/' + section);
 
     if(!json) return yield next;
 
@@ -48,7 +48,7 @@ www.search = function*() {
 www.archive = function*(next) {
 
     if(this.params.day) {
-        const json = yield lib.fetch('/api/archive/'+ this.params.day);
+        const json = yield lib.fetch('/archive/'+ this.params.day);
         if(!json) return yield next;
 
         const model = json;
@@ -67,7 +67,7 @@ www.archive = function*(next) {
 www.story = function*(next) {
 
     try {
-        const json = yield lib.fetch('/api/story/'+ this.params.storyid);
+        const json = yield lib.fetch('/story/'+ this.params.storyid);
         if(!json) return yield next;
 
         const model = {story: json};
@@ -90,7 +90,7 @@ www.story = function*(next) {
 www.video = function*(next) {
 
     try {
-        const json = yield lib.fetch('/api/video/'+ this.params.videoid);
+        const json = yield lib.fetch('/video/'+ this.params.videoid);
         if(!json) return yield next;
 
         const model = {video: json};
@@ -111,7 +111,7 @@ www.video = function*(next) {
 www.publisher = function*(next) {
     const publisherDomain = this.params.publisher.toLowerCase();
 
-    const json = yield lib.fetch('/api/publisher/'+publisherDomain);
+    const json = yield lib.fetch('/publisher/'+publisherDomain);
     if(!json) return yield next;
 
     if(json.stories[0]) {
@@ -129,7 +129,7 @@ www.publisher = function*(next) {
 www.topvideo = function*(next) {
 
     try {
-        const json = yield lib.fetch('/api/topvideo');
+        const json = yield lib.fetch('/topvideo');
         if(!json) return yield next;
 
         const model = {video: json};
@@ -150,7 +150,7 @@ www.topvideo = function*(next) {
 www.topstory = function*(next) {
 
     try {
-        const json = yield lib.fetch('/api/lead/'+ this.params.section);
+        const json = yield lib.fetch('/lead/'+ this.params.section);
         if(!json) return yield next;
 
         const model = json;
