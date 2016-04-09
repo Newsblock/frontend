@@ -52,6 +52,7 @@ app.use(function* ctxSetMetaDefaults(next) {
     metaData.summary = 'Newsblock combines ‘topic relevance’ and ‘social trends’ to recommend the best stories';
     metaData.image ='http://s3.amazonaws.com/newsblock/NB_ScreenShot2.png';
     this.state.meta = metaData;
+    this.state.routepath = this.path;
     yield next;
 });
 
