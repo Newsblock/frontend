@@ -17,94 +17,6 @@ function init() {
 
 $(document).ready(init());
 
-window.NB = {
-    readCookie:function readCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for(var i=0;i < ca.length;i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
-    },
-    createCookie: function createCookie(name,value,days) {
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime()+(days*24*60*60*1000));
-            var expires = "; expires="+date.toGMTString();
-        }
-        else var expires = "";
-        document.cookie = name+"="+value+expires+"; path=/";
-    },
-    getHtml: function (data) {
-        var tokens = data.split('|');
-        var city = tokens[0]||'', icon = tokens[1]||'', temp=tokens[2]||'';
-        var wHtml="<span class='weather--loc'>"+ city +"</span>"
-            + "<i class='wi wi-"+ icon + "'></i>"
-            + "<span class='weather--temp'>"+ temp +"<i class='wi-fahrenheit'></i></span>";
-        return wHtml;
-    },
-    geoSuccess: function (pos) {
-        var crd = pos.coords;
-        var latLong =  Math.round(crd.latitude*100)/100 +','+ Math.round(crd.longitude*100)/100;
-        console.log('Your cooridinates:', latLong);
-        var options = {
-            url:'/location/'+latLong,
-            success: function (resp) {
-                var city='', icon='', temp='';
-                if(resp.city){
-                    city=resp.city.replace(' Township','');
-                }
-                if(resp.forecast) {
-                    icon=resp.forecast.icon||'';
-                    temp=Math.floor(resp.forecast.temperature)||'';
-                }
-                var cookieVal = city +"|"+icon+"|"+temp;
-                NB.createCookie('locationData', cookieVal, 0.3);
-                $('#weather-info').html(NB.getHtml(cookieVal));
-            },
-            error: function (error) {
-                console.log('## err', error.statusText);
-            }
-        };
-        $.ajax(options);
-    },
-    geoError: function (err) {
-        console.warn('ERROR(' + err.code + '): ' + err.message);
-    },
-    init: function () {
-        var baseUrl = 'http://nvcdn.nbcnews.com'
-        this.locationCookie = this.readCookie('locationData');
-        if(this.locationCookie) {
-            var html = this.getHtml(this.locationCookie);
-            $('#weather-info').html(html);
-        }
-        else{
-//                var geoOptions = {enableHighAccuracy: false, timeout: 6000, maximumAge: Infinity};
-//                if (navigator.geolocation) {
-//                        navigator.geolocation.getCurrentPosition(this.geoSuccess, this.geoError, geoOptions);
-//                }
-            var self = this;
-            $.ajaxPrefilter(function(options) {
-                if (options.crossDomain && jQuery.support.cors) {
-                    options.url = 'http://nb-cors.herokuapp.com/' + options.url;
-                }
-            });
-
-            $.ajax({
-                url: baseUrl + '/_login/proxy?path=/servista/quova&ip=0',
-                dataType: "xml",
-                success: function(xml) {
-                    var pos = {coords: { latitude:$(xml).find("Latitude").text(), longitude:$(xml).find("Longitude").text()}}
-                    self.geoSuccess(pos);
-                }
-            });
-
-        }
-    }
-};
-
 $(function() {
     // GA click/touch tracking
     $(document).on('mousedown touchstart', 'a', function(event){
@@ -131,13 +43,6 @@ $(function() {
         $('.yt-player-wrapper').removeClass('is-open');
     });
 
-    //  NB.init();
-
-//    window.doorbellOptions = { hideButton: true, appKey: 'Fe0ta22Pckzqc0CsZsiKDcPV0QxlnU8yA7ihXEffRLoAgZepDQ8Leg55W2NtHT72'};
-//    (function(d, t) {
-//      var g = d.createElement(t);g.id = 'doorbellScript';g.type = 'text/javascript';g.async = true;g.src = 'https://doorbell.io/button/745';(d.getElementsByTagName('head')[0]||d.getElementsByTagName('body')[0]).appendChild(g);
-//    }(document, 'script'));
-
     var touchEventName =  ('ontouchstart' in window) ? 'touchstart':'click';
     $('.js-toggle-menu').on(touchEventName,function (e) {
         e.preventDefault();
@@ -154,9 +59,6 @@ $(function() {
         $(this).toggleClass('is-active');
     });
 
-//    $('.doorbell-button').click(function () {
-//      doorbell.show();
-//    });
 
     $('#bookmarkme').click(function() {
         if (window.sidebar && window.sidebar.addPanel) { // Mozilla Firefox Bookmark
@@ -211,21 +113,6 @@ addthisScript.setAttribute('src', 'http://s7.addthis.com/js/300/addthis_widget.j
 document.body.appendChild(addthisScript)
 var addthis_config = addthis_config||{};
 addthis_config.pubid = 'ra-54d413a56139be0c';
-
-//
-//window.twttr = (function(d, s, id) {
-//    var js, fjs = d.getElementsByTagName(s)[0], t = window.twttr || {};
-//    if (d.getElementById(id)) return t;
-//    js = d.createElement(s);
-//    js.id = id;
-//    js.src = "https://platform.twitter.com/widgets.js";
-//    fjs.parentNode.insertBefore(js, fjs);
-//    t._e = [];
-//    t.ready = function(f) {
-//        t._e.push(f);
-//    };
-//    return t;
-//}(document, "script", "twitter-wjs"))
 
 //-- Quantcast Tag -->
 var _qevents = _qevents || [];

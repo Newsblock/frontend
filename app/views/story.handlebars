@@ -6,27 +6,13 @@
         <div class="entry--meta entry--shares entry--meta-last">{{story.stats.total}} shares</div>
         <meta itemprop="interactionCount" content="UserTweets:{{story.stats.tweetcount}}"/>
       </div>
-        {{#unless xampurl}}
-            <h1 itemprop="headline"><a class="flutter-headline" href="{{story.url}}">{{{story.headline}}}</a></h1>
-            <p class="byline">by <a href="{{publisher-url story.publisherInfo.domain}}"><img class="entry--meta entry--meta-last" src="{{favicon-url story.publisherInfo.domain}}" alt="{{story.publisher}}"><strong itemprop="publisher">
-                {{story.publisher}}</strong></a> <time datetime="{{datetime story.published}}" itemprop="datePublished">{{formatdate story.published}}</time></p>
-        {{/unless}}
+        <h1 itemprop="headline"><a class="flutter-headline" href="{{story.url}}">{{{story.headline}}}</a></h1>
+        <p class="byline">by <a href="{{publisher-url story.publisherInfo.domain}}"><img class="entry--meta entry--meta-last" src="{{favicon-url story.publisherInfo.domain}}" alt="{{story.publisher}}"><strong itemprop="publisher">
+            {{story.publisher}}</strong></a> <time datetime="{{datetime story.published}}" itemprop="datePublished">{{formatdate story.published}}</time></p>
       {{> addthis}}
     </header>
     <div itemprop="articleBody">
-        {{#if xampurl}}
-            <div class="amp--container">
-
-                <a href="/{{story.section}}" class="js-amp-btn btn btn--default full-width"><i class="ion-arrow-left-c"></i> {{story.section}} - newsblock </a>
-                <iframe id="amp-iframe" class="js-amp-iframe amp--iframe"
-                        sandbox="allow-popups allow-scripts allow-forms allow-pointer-lock allow-popups-to-escape-sandbox allow-same-origin"
-                        frameborder="0" scrolling="yes" src="/api/amp?urlpath=http://{{ampurl}}">
-                </iframe>
-            </div>
-        {{/if}}
-        {{#unless xampurl}}
             <a href="{{story.url}}"><img class="img-responsive article--art" src="{{story.image}}" itemprop="image"/></a>
-        {{/unless}}
       <p class="dek article--layout">{{{story.summary}}}</p>
     </div>
     <p><a class="btn btn--default" href="{{story.url}}">Read More</a></p>
