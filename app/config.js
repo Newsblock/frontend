@@ -6,6 +6,7 @@ const koa        = require('koa');            // koa framework
 const handlebars = require('koa-handlebars'); // handlebars templating
 const helmet     = require('koa-helmet');     // security header middleware
 const serve      = require('koa-static');     // static file serving middleware
+const lib        = require('./../lib/lib');
 //const bunyan     = require('bunyan');         // logging
 //const koaLogger  = require('koa-bunyan');     // logging
 
@@ -46,7 +47,7 @@ app.use(function* ctxSetMetaDefaults(next) {
     }
 
     const metaData = {};
-    //metaData.twitterLists = twitterLists;
+    metaData.twitterLists = lib.twitterLists;
     metaData.title = metaData.socialTitle = 'Latest News Headlines and Videos';
     metaData.summary = 'Newsblock combines ‘topic relevance’ and ‘social trends’ to recommend the best stories';
     metaData.image ='http://s3.amazonaws.com/newsblock/NB_ScreenShot2.png';
