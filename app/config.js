@@ -40,6 +40,11 @@ app.use(function* ctxAddDomain(next) {
 });
 
 app.use(function* ctxSetMetaDefaults(next) {
+
+    if (app.env === 'development') {
+        this.state.devmode = true;
+    }
+
     const metaData = {};
     //metaData.twitterLists = twitterLists;
     metaData.title = metaData.socialTitle = 'Latest News Headlines and Videos';
