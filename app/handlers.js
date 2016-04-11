@@ -82,7 +82,6 @@ www.story = function*(next) {
         yield this.render('story', model);
 
     } catch (e) {
-        console.log('### Error Logged ###');
         this.throw(e.status||500, e.message);
     }
 };

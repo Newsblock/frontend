@@ -60,7 +60,8 @@ app.use(function* ctxSetMetaDefaults(next) {
 // handlebars templating
 app.use(handlebars({
     defaultLayout: 'main',
-    extension:   ['html', 'handlebars'],
+    cache: app.env !== 'development',
+    extension:   ['html', 'handlebars', 'hbs'],
     viewsDir:    'app/views',
     partialsDir: 'app/views/partials',
     layoutsDir: 'app/views/layouts',
