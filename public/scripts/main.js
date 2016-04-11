@@ -138,23 +138,34 @@ $(function () {
     ampSizer();
     $(window).resize(ampSizer);
 
-    greta.gossip.on('click_event', function(data) {
+    function handleGossip(data) {
         var $ul = $('#rt-events');
-        $ul.append('<li><a href="'+ data.url +'">'+ data.text +'</a></li>');
-    });
+        $ul.prepend('<li><a href="'+ data.url +'">'+ data.text +'</a></li>').fadeIn();
+    }
+
+    greta.gossip.on('NB_click_event', handleGossip);
+    greta.gossip.on('NB_pageload_event', handleGossip);
+
+    greta.gossip.broadcast([{
+        event: 'NB_pageload_event',
+        data: {
+            url: document.location.href,
+            text: document.title+ ' (viewed)',
+            ts: new Date()
+        }
+    }]);
 
     $(document).on('mousedown touchstart', 'a', function(event){
         var href = $(event.target).attr('href');
         var title = $(event.target).attr('title');
         if(href) {
             greta.gossip.broadcast([{
-                event: 'click_event',
+                event: 'NB_click_event',
                 data: {
                     url: href,
-                    text: title,
-                    updatedAt: new Date()
+                    text: title + ' (clicked)',
+                    ts: new Date()
                 }
-
             }]);
         }
     });
