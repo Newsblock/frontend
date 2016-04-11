@@ -8,8 +8,8 @@ const router = require('koa-router')(); // router middleware for koa
 const www = require('./handlers.js');
 
 // parameterized routes
-router.get( '/archive/:day?', www.archive);
-router.get( '/s/:storyid',   www.story);
+router.get( '/archive/:day(201[0-9]-[0-9]{2}-[0-9]{2})?', www.archive);
+router.get( '/s/:storyid([0-9a-z]{24})', www.story);
 router.get( '/v/:videoid',   www.video);
 router.get( '/p/:publisher', www.publisher);
 
@@ -27,7 +27,7 @@ router.get( '/lead/:section', www.topvideo);
 
 // fronts
 router.get( '/(|top)',  www.index);  // cover
-router.get( '/:section',     www.section);
+router.get( '/:section([A-Za-z-]{2,40})',     www.section);
 
 
 module.exports = router.middleware();

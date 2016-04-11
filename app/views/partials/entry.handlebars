@@ -1,7 +1,9 @@
 <div class="entry entry--post no-summary" itemscope itemtype="http://schema.org/Article">
   {{#if importedImg}}
     <div class="entry--img-sm">
-        <a {{#if xampurl}} href="/s/{{_id}}" {{else}} href="{{url}}" target="_blank" {{/if}}><img class="img-responsive entry--img" src="http://cdn.getnewsblock.com/icons/000000-0.5.png" data-src="{{imgurl this}}" data-image="{{image}}" alt="{{{headline}}}"/></a>
+        <a {{#if xampurl}} href="/s/{{_id}}" {{else}} href="{{url}}" target="_blank" {{/if}}>
+            {{>imgStorythumb}}
+        </a>
     </div>
   {{/if}}
   <div class="entry--txt entry--txt-heading">

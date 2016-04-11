@@ -1,5 +1,6 @@
 <div class="entry--meta-wrapper">
-  <div class="entry--meta entry--pub" itemprop="publisher"><img src="http://cdn.getnewsblock.com/icons/000000-0.5.png" data-src="{{favicon-url publisherInfo.domain}}" alt="publisher"> {{publisher}}</div>
+  <div class="entry--meta entry--pub" itemprop="publisher">
+      {{>imgFavicon}} {{publisher}}</div>
   <time class="entry--meta entry--time" datetime="{{datetime published}}" itemprop="datePublished">{{formatdate published}}</time>
     {{#if stats.total}}
         <div class="entry--meta entry--shares">{{stats.total}} shares</div>

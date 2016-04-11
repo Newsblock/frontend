@@ -16,7 +16,7 @@
           {{#if importedImg}}
             <div class="entry--img-sm align-middle">
                 <a {{#if xampurl}} href="/s/{{_id}}" {{else}} href="{{url}}" target="_blank" {{/if}}>
-                  <img class="img-responsive entry--img" src="http://cdn.getnewsblock.com/icons/000000-0.5.png" data-src="{{imgurl this}}" data-image="{{image}}" alt="{{headline}}">
+                  {{>imgStorythumb}}
                 </a>
             </div>
           {{/if}}

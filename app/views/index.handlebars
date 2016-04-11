@@ -10,7 +10,9 @@
           <div class="entry--relative">
             {{#if leadstory.importedImg}}
               <div class="entry--img-lead">
-                <a href="{{leadstory.url}}" target="_blank"><img class="img-responsive entry--img" src="{{imgurl leadstory}}" data-image="{{leadstory.image}}" alt="{{{leadstory.headline}}}"/></a>
+                <a href="{{leadstory.url}}" target="_blank">
+                    {{>imgStorythumbabove leadstory}}
+                </a>
               </div>
             {{/if}}
             <div class="entry--txt entry--txt-heading">
@@ -20,7 +22,7 @@
 
               <div class="entry--meta-wrapper">
                 <div class="entry--meta entry--pub" itemprop="publisher">
-                  <img src="http://cdn.getnewsblock.com/icons/000000-0.5.png" data-src="{{favicon-url leadstory.publisherInfo.domain}}" alt="{{leadstory.publisher}}"> {{leadstory.publisher}}
+                    {{>imgFavicon leadstory}} {{leadstory.publisher}}
                 </div>
                 <time class="entry--meta entry--time" datetime="{{datetime leadstory.published}}" itemprop="datePublished">{{formatdate leadstory.published}}
                 </time>
@@ -93,7 +95,7 @@
                 <div class="entry--img-md align-middle">
                     <a class="yt-link" data-videoid="{{videos.[0].videoId}}" href="http://www.youtube.com/watch?v={{videos.[0].videoId}}">
                         <i data-videoid="{{videos.[0].videoId}}" class="icon--play ion-ios-play-outline"></i>
-                        <img data-videoid="{{videos.[0].videoId}}" class="img-responsive entry--img" src="http://cdn.getnewsblock.com/icons/000000-0.5.png" data-src="{{videos.[0].thumbnails.medium.url}}" alt="{{videos.[0].title}}" itemprop="thumbnail"/>
+                        {{>imgVideothumb videos.[0]}}
                     </a>
                     </a>
                 </div>
@@ -121,7 +123,7 @@
             <div class="entry--img-md align-middle">
               <a class="yt-link" data-videoid="{{videoId}}" href="http://www.youtube.com/watch?v={{videoId}}">
                 <i data-videoid="{{videoId}}" class="icon--play ion-ios-play-outline"></i>
-                <img data-videoid="{{videoId}}" class="img-responsive entry--img" src="http://cdn.getnewsblock.com/icons/000000-0.5.png" data-src="{{thumbnails.medium.url}}" alt="{{title}}" itemprop="thumbnail"/>
+                {{>imgVideothumb}}
               </a>
               </a>
             </div>

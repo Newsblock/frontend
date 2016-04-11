@@ -7,8 +7,10 @@
         <meta itemprop="interactionCount" content="UserTweets:{{story.stats.tweetcount}}"/>
       </div>
         <h1 itemprop="headline"><a class="flutter-headline" href="{{story.url}}">{{{story.headline}}}</a></h1>
-        <p class="byline">by <a href="{{publisher-url story.publisherInfo.domain}}"><img class="entry--meta entry--meta-last" src="{{favicon-url story.publisherInfo.domain}}" alt="{{story.publisher}}"><strong itemprop="publisher">
-            {{story.publisher}}</strong></a> <time datetime="{{datetime story.published}}" itemprop="datePublished">{{formatdate story.published}}</time></p>
+        <p class="byline">by <a href="{{publisher-url story.publisherInfo.domain}}">
+            {{>imgFavicon story}}<strong itemprop="publisher">{{story.publisher}}</strong></a>
+            <time datetime="{{datetime story.published}}" itemprop="datePublished">{{formatdate story.published}}</time>
+        </p>
       {{> addthis}}
     </header>
     <div itemprop="articleBody">
