@@ -138,35 +138,63 @@ $(function () {
     ampSizer();
     $(window).resize(ampSizer);
 
-    function handleGossip(data) {
-        var $ul = $('#rt-events');
-        $ul.prepend('<li><a href="'+ data.url +'">'+ data.text +'</a></li>').fadeIn();
-    }
+    greta.signaling.connected(function() {
 
-    greta.gossip.on('NB_click_event', handleGossip);
-    greta.gossip.on('NB_pageload_event', handleGossip);
-
-    greta.gossip.broadcast([{
-        event: 'NB_pageload_event',
-        data: {
-            url: document.location.href,
-            text: document.title+ ' (viewed)',
-            ts: new Date()
+        function onSignal(data) {
+            var $ul = $('#rt-events');
+            $ul.prepend('<li><a href="'+ data.url +'">'+ data.text +'</a></li>').fadeIn();
         }
-    }]);
 
-    $(document).on('mousedown touchstart', 'a', function(event){
-        var href = $(event.target).attr('href');
-        var title = $(event.target).attr('title');
-        if(href) {
-            greta.gossip.broadcast([{
-                event: 'NB_click_event',
-                data: {
-                    url: href,
-                    text: title + ' (clicked)',
-                    ts: new Date()
-                }
-            }]);
-        }
+        greta.signaling.subscribe({
+            channel: 'NBChannel',
+            message: onSignal
+        });
+
+        greta.signaling.publish({
+            channel: 'NBChannel',
+            message: {url: document.location.href, text: document.title+ ' (viewed)'}
+        });
+
+        $(document).on('mousedown touchstart', 'a', function(event){
+            var href = $(event.target).attr('href');
+            var title = $(event.target).attr('title');
+            if(href) {
+                greta.signaling.publish({
+                    channel: 'NBChannel',
+                    message: {url: href, text: title+ ' (clicked)'}
+                });
+            }
+        });
     });
+
+    //function handleGossip(data) {
+    //    var $ul = $('#rt-events');
+    //    $ul.prepend('<li><a href="'+ data.url +'">'+ data.text +'</a></li>').fadeIn();
+    //}
+    //greta.gossip.on('NB_click_event', handleGossip);
+    //greta.gossip.on('NB_pageload_event', handleGossip);
+    //
+    //greta.gossip.broadcast([{
+    //    event: 'NB_pageload_event',
+    //    data: {
+    //        url: document.location.href,
+    //        text: document.title+ ' (viewed)',
+    //        ts: new Date()
+    //    }
+    //}]);
+
+    //$(document).on('mousedown touchstart', 'a', function(event){
+    //    var href = $(event.target).attr('href');
+    //    var title = $(event.target).attr('title');
+    //    if(href) {
+    //        greta.gossip.broadcast([{
+    //            event: 'NB_click_event',
+    //            data: {
+    //                url: href,
+    //                text: title + ' (clicked)',
+    //                ts: new Date()
+    //            }
+    //        }]);
+    //    }
+    //});
 });
