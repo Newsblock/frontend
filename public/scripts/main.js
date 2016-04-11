@@ -139,20 +139,25 @@ $(function () {
     $(window).resize(ampSizer);
 
     greta.signaling.connected(function() {
+        console.log('### Connected to NB_Channel');
 
         function onSignal(data) {
+            console.log('### msg', data);
             var $ul = $('#rt-events');
             $ul.prepend('<li><a href="'+ data.url +'">'+ data.text +'</a></li>').fadeIn();
         }
 
-        greta.signaling.subscribe({
-            channel: 'NBChannel',
-            message: onSignal
-        });
+        if(document.location.pathname === '/live') {
+            console.log('### Subscribing to NB_Channel');
+            greta.signaling.subscribe({
+                channel: 'NB_Channel',
+                message: onSignal
+            });
+        }
 
         greta.signaling.publish({
-            channel: 'NBChannel',
-            message: {url: document.location.href, text: document.title+ ' (viewed)'}
+            channel: 'NB_Channel',
+            message: {url: document.location.href, text: document.title+ ' (viewed) ' + new Date()}
         });
 
         $(document).on('mousedown touchstart', 'a', function(event){
@@ -160,8 +165,8 @@ $(function () {
             var title = $(event.target).attr('title');
             if(href) {
                 greta.signaling.publish({
-                    channel: 'NBChannel',
-                    message: {url: href, text: title+ ' (clicked)'}
+                    channel: 'NB_Channel',
+                    message: {url: href, text: title+ ' (clicked) ' + new Date()}
                 });
             }
         });
