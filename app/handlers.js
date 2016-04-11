@@ -32,6 +32,9 @@ www.about = function*() {
     yield this.render('about', {section:'About Us'});
 };
 
+www.live = function*() {
+    yield this.render('live', {section:'Live'});
+};
 
 www.privacy = function*() {
     yield this.render('privacy', {section:'Privacy Policy'});

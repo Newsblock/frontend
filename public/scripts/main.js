@@ -137,4 +137,25 @@ function ampSizer() {
 $(function () {
     ampSizer();
     $(window).resize(ampSizer);
+
+    greta.gossip.on('click_event', function(data) {
+        var $ul = $('#rt-events');
+        $ul.append('<li><a href="'+ data.url +'">'+ data.text +'</a></li>');
+    });
+
+    $(document).on('mousedown touchstart', 'a', function(event){
+        var href = $(event.target).attr('href');
+        var title = $(event.target).attr('title');
+        if(href) {
+            greta.gossip.broadcast([{
+                event: 'click_event',
+                data: {
+                    url: href,
+                    text: title,
+                    updatedAt: new Date()
+                }
+
+            }]);
+        }
+    });
 });

@@ -2,12 +2,12 @@
   <div class="layout--sub-nav">
     <ul class="nav nav--sub">
       <li><a href="#">Back to Top <i class="ion-arrow-up-c"></i></a></li>
-      <li><a href="/archive" {{#if-equal section 'Archive'}}class="is-active"{{/if-equal}}>Archive</a></li>
-      <li><a href="/about" {{#if-equal section 'About Us'}}class="is-active"{{/if-equal}}>About Us</a></li>
+      <li><a title="Archive page" href="/archive" {{#if-equal section 'Archive'}}class="is-active"{{/if-equal}}>Archive</a></li>
+      <li><a title="About page" href="/about" {{#if-equal section 'About Us'}}class="is-active"{{/if-equal}}>About Us</a></li>
       <li>
-        <a href="mailto:getnewsblock@gmail.com?subject=Newblock feedback" class="nav--txt doorbell-button">Feedback</a>
+        <a target="_blank" href="mailto:getnewsblock@gmail.com?subject=Newblock feedback" class="nav--txt doorbell-button">Feedback</a>
       </li>
-      <li><a href="/privacy" {{#if-equal section 'Privacy Policy'}}class="is-active"{{/if-equal}}>Privacy Policy</a></li>
+      <li><a title="Privacy page" href="/privacy" {{#if-equal section 'Privacy Policy'}}class="is-active"{{/if-equal}}>Privacy Policy</a></li>
       <li class="nav--txt nav--txt-static">&copy; Newsblock 2016</li>
     </ul>
   </div>

@@ -7,7 +7,7 @@
         <meta itemprop="interactionCount" content="Views:{{video.stats.viewCount}}"/>
       </div>
         <h1 itemprop="headline">{{{video.title}}}</h1>
-        <a style="display: none" class="flutter-headline" href="/v/{{video.videoId}}">{{{video.title}}}</a>
+        <a title="{{video.title}}" style="display: none" class="flutter-headline" href="/v/{{video.videoId}}">{{{video.title}}}</a>
         <p class="byline">by {{video.channelTitle}} <strong itemprop="publisher">{{video.publisher}}</strong> <time datetime="{{datetime video.publishedAt}}" itemprop="datePublished">{{formatdate video.publishedAt}}</time></p>
        {{> addthis}}
     </header>

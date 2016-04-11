@@ -18,7 +18,7 @@ router.get( '/p/:publisher', www.publisher);
 router.get( '/about',   www.about);
 router.get( '/privacy', www.privacy);
 router.get( '/search',  www.search);
-
+router.get( '/live',    www.live);
 
 // pages for social automation
 router.get( '/topvideo', www.topvideo);

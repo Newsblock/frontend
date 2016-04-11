@@ -2,22 +2,22 @@
   <article class="entry--lead" itemscope itemtype="http://schema.org/NewsArticle">
     <header class="article--layout">
       <div class="entry--meta-wrapper">
-        <div class="capitalize entry--meta"><a href="/{{story.section}}">{{story.section}}</a></div>
+        <div class="capitalize entry--meta"><a title="{{story.section}} section" href="/{{story.section}}">{{story.section}}</a></div>
         <div class="entry--meta entry--shares entry--meta-last">{{story.stats.total}} shares</div>
         <meta itemprop="interactionCount" content="UserTweets:{{story.stats.tweetcount}}"/>
       </div>
-        <h1 itemprop="headline"><a class="flutter-headline" href="{{story.url}}">{{{story.headline}}}</a></h1>
-        <p class="byline">by <a href="{{publisher-url story.publisherInfo.domain}}">
+        <h1 itemprop="headline"><a title="{{story.headline}}" class="flutter-headline" href="{{story.url}}">{{{story.headline}}}</a></h1>
+        <p class="byline">by <a title="{{story.publisher}} page" href="{{publisher-url story.publisherInfo.domain}}">
             {{>imgFavicon story}}<strong itemprop="publisher">{{story.publisher}}</strong></a>
             <time datetime="{{datetime story.published}}" itemprop="datePublished">{{formatdate story.published}}</time>
         </p>
       {{> addthis}}
     </header>
     <div itemprop="articleBody">
-            <a href="{{story.url}}"><img class="img-responsive article--art" src="{{story.image}}" itemprop="image"/></a>
-      <p class="dek article--layout">{{{story.summary}}}</p>
+        <a title="{{story.headline}}" href="{{story.url}}"><img class="img-responsive article--art" src="{{story.image}}" itemprop="image"/></a>
+        <p class="dek article--layout">{{{story.summary}}}</p>
     </div>
-    <p><a class="btn btn--default" href="{{story.url}}">Read More</a></p>
+    <p><a title="Read more: {{story.headline}}" class="btn btn--default" href="{{story.url}}">Read More</a></p>
   </article>
     {{> disqus}}
 </div>

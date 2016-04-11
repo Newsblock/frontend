@@ -1,14 +1,14 @@
 <div class="entry entry--post has-summary" itemscope itemtype="http://schema.org/Article">
   {{#if importedImg}}
     <div class="entry--img-sm">
-        <a {{#if xampurl}} href="/s/{{_id}}" {{else}} href="{{url}}" target="_blank" {{/if}}>
+        <a href="{{url}}" target="_blank" title="{{headline}}">
           {{>imgStorythumb}}
         </a>
     </div>
   {{/if}}
   <div class="entry--txt entry--txt-heading">
     <h4 itemprop="name headline">
-        <a {{#if xampurl}} href="/s/{{_id}}" {{else}} href="{{url}}" target="_blank" {{/if}}>{{{headline}}}</a>
+        <a href="{{url}}" target="_blank" title="{{headline}}">{{{headline}}}</a>
     </h4>
     {{> entrymeta}}
   </div>

@@ -10,14 +10,14 @@
           <div class="entry--relative">
             {{#if leadstory.importedImg}}
               <div class="entry--img-lead">
-                <a href="{{leadstory.url}}" target="_blank">
+                <a title="{{leadstory.headline}}" href="{{leadstory.url}}" title="{{leadstory.headline}}" target="_blank">
                     {{>imgStorythumbabove leadstory}}
                 </a>
               </div>
             {{/if}}
             <div class="entry--txt entry--txt-heading">
               <h4 class="entry--lead-heading" itemprop="name headline">
-                <a href="{{leadstory.url}}" target="_blank">{{{leadstory.headline}}}</a>
+                <a title="{{leadstory.headline}}" href="{{leadstory.url}}" title="{{leadstory.headline}}" target="_blank">{{{leadstory.headline}}}</a>
               </h4>
 
               <div class="entry--meta-wrapper">
@@ -29,7 +29,7 @@
                 <div class="entry--meta entry--shares">{{leadstory.stats.total}}
                   shares
                 </div>
-                <a class="entry--meta entry--meta-last entry--discuss" href="/s/{{leadstory._id}}"><i class="ion-chatbubble" aria-hidden="true"></i>
+                <a title="Discuss: {{leadstory.headline}}" class="entry--meta entry--meta-last entry--discuss" href="/s/{{leadstory._id}}"><i class="ion-chatbubble" aria-hidden="true"></i>
                   discuss</a>
                 <meta itemprop="interactionCount" content="UserTweets:{{leadstory.stats.tweetcount}}"/>
               </div>
@@ -51,14 +51,14 @@
       <div class="heading--group">
         {{#if sections}}
           <div class="heading--alt heading--alt-anchor">
-            <a href="#trending">Trending <i class="ion-chatbubbles"></i></a>
+            <a href="#trending" title="Trending tab">Trending <i class="ion-chatbubbles"></i></a>
           </div>
         {{/if}}
         <h3 class="h5 heading--alt heading--alt-headlines">Latest
           <i class="ion-clock"></i></h3>
         {{#if videos}}
           <div class="heading--alt heading--alt-anchor">
-            <a href="#videos">Videos <i class="ion-ios-videocam"></i></a>
+            <a href="#videos" title="Videos tab">Videos <i class="ion-ios-videocam"></i></a>
           </div>
         {{/if}}
       </div>
@@ -79,11 +79,11 @@
       <div class="heading--group">
         {{#if sections}}
           <div class="heading--alt heading--alt-anchor">
-            <a href="#trending">Trending <i class="ion-chatbubbles"></i></a>
+            <a href="#trending" title="Trending tab">Trending <i class="ion-chatbubbles"></i></a>
           </div>
         {{/if}}
         <div class="heading--alt heading--alt-anchor">
-          <a href="#latest">Latest <i class="ion-clock"></i></a>
+          <a href="#latest" title="Latest tab">Latest <i class="ion-clock"></i></a>
         </div>
         <h3 class="h5 heading--alt heading--alt-headlines">Videos
           <i class="ion-ios-videocam"></i></h3>
@@ -93,23 +93,22 @@
         <div class="entry entry--post" itemscope itemtype="http://schema.org/VideoObject">
             {{#if videos.[0].thumbnails}}
                 <div class="entry--img-md align-middle">
-                    <a class="yt-link" data-videoid="{{videos.[0].videoId}}" href="http://www.youtube.com/watch?v={{videos.[0].videoId}}">
+                    <a title="{{videos.[0].title}}" class="yt-link" data-videoid="{{videos.[0].videoId}}" href="http://www.youtube.com/watch?v={{videos.[0].videoId}}">
                         <i data-videoid="{{videos.[0].videoId}}" class="icon--play ion-ios-play-outline"></i>
                         {{>imgVideothumb videos.[0]}}
-                    </a>
                     </a>
                 </div>
             {{/if}}
             <div class="entry--txt entry--txt-video">
                 <h4 class="h6" itemprop="name">
-                    <a class="yt-link" data-videoid="{{videos.[0].videoId}}" href="http://www.youtube.com/watch?v={{videos.[0].videoId}}">{{{videos.[0].title}}}</a>
+                    <a title="{{videos.[0].title}}" class="yt-link" data-videoid="{{videos.[0].videoId}}" href="http://www.youtube.com/watch?v={{videos.[0].videoId}}">{{{videos.[0].title}}}</a>
                 </h4>
                 <div class="entry--meta-wrapper">
                     <div class="entry--meta entry--pub">{{videos.[0].channelTitle}}</div>
                     <time class="entry--meta entry--time" datetime="{{datetime videos.[0].published}}" itemprop="datePublished">{{formatdate videos.[0].publishedAt}}</time>
                     <div class="entry--meta entry--views">{{videos.[0].stats.viewCount}} views
                     </div>
-                    <a class="entry--meta entry--meta-last entry--discuss entry--meta-last" href="/v/{{videos.[0].videoId}}"><i class="ion-chatbubble" aria-hidden="true"></i>
+                    <a title="{{videos.[0].title}}" class="entry--meta entry--meta-last entry--discuss entry--meta-last" href="/v/{{videos.[0].videoId}}"><i class="ion-chatbubble" aria-hidden="true"></i>
                         discuss</a>
                     <meta itemprop="interactionCount" content="UserPlays:{{videos.[0].stats.viewCount}}"/>
                 </div>
@@ -121,7 +120,7 @@
         <div class="entry entry--post" itemscope itemtype="http://schema.org/VideoObject">
           {{#if thumbnails}}
             <div class="entry--img-md align-middle">
-              <a class="yt-link" data-videoid="{{videoId}}" href="http://www.youtube.com/watch?v={{videoId}}">
+              <a title="{{title}}" class="yt-link" data-videoid="{{videoId}}" href="http://www.youtube.com/watch?v={{videoId}}">
                 <i data-videoid="{{videoId}}" class="icon--play ion-ios-play-outline"></i>
                 {{>imgVideothumb}}
               </a>
@@ -130,14 +129,14 @@
           {{/if}}
           <div class="entry--txt entry--txt-video">
             <h4 class="h6" itemprop="name">
-              <a class="yt-link" data-videoid="{{videoId}}" href="http://www.youtube.com/watch?v={{videoId}}">{{{title}}}</a>
+              <a title="{{title}}" class="yt-link" data-videoid="{{videoId}}" href="http://www.youtube.com/watch?v={{videoId}}">{{{title}}}</a>
             </h4>
             <div class="entry--meta-wrapper">
               <div class="entry--meta entry--pub">{{channelTitle}}</div>
               <time class="entry--meta entry--time" datetime="{{datetime published}}" itemprop="datePublished">{{formatdate publishedAt}}</time>
               <div class="entry--meta entry--views">{{stats.viewCount}} views
               </div>
-              <a class="entry--meta entry--meta-last entry--discuss entry--meta-last" href="/v/{{videoId}}"><i class="ion-chatbubble" aria-hidden="true"></i>
+              <a title="{{title}}" class="entry--meta entry--meta-last entry--discuss entry--meta-last" href="/v/{{videoId}}"><i class="ion-chatbubble" aria-hidden="true"></i>
                 discuss</a>
               <meta itemprop="interactionCount" content="UserPlays:{{stats.viewCount}}"/>
             </div>
