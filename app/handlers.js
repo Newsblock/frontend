@@ -7,8 +7,16 @@ const lib = require('./../lib/lib');
 
 
 www.index = function*(next) {
-    const json = yield lib.fetch('/cover');
-    if(!json) return yield next;
+
+    let json = yield lib.fetch('/cover');
+
+    if(!json) {
+        json = yield lib.fetchFallback('cover');
+    }
+
+    if(json.error) {
+        return yield next;
+    }
 
     var model = json;
     model.meta = this.state.meta;
@@ -18,7 +26,11 @@ www.index = function*(next) {
 
 www.section = function*(next) {
     var section = this.params.section.toLowerCase();
-    const json = yield lib.fetch('/' + section);
+    let json = yield lib.fetch('/' + section);
+
+    if(!json) {
+        json = yield lib.fetchFallback('section_'+ section);
+    }
 
     if(!json) return yield next;
 
