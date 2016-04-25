@@ -8,11 +8,7 @@ const lib = require('./../lib/lib');
 
 www.index = function*(next) {
 
-    let json = yield lib.fetch('/cover');
-
-    if(!json) {
-        json = yield lib.fetchFallback('cover');
-    }
+    let json = yield lib.fetchS3('cover');
 
     if(json.error) {
         return yield next;
@@ -26,11 +22,7 @@ www.index = function*(next) {
 
 www.section = function*(next) {
     var section = this.params.section.toLowerCase();
-    let json = yield lib.fetch('/' + section);
-
-    if(!json) {
-        json = yield lib.fetchFallback('section_'+ section);
-    }
+    let json = yield lib.fetchS3('section_'+ section);
 
     if(!json) return yield next;
 
@@ -63,7 +55,7 @@ www.search = function*() {
 www.archive = function*(next) {
 
     if(this.params.day) {
-        const json = yield lib.fetch('/archive/'+ this.params.day);
+        const json = yield lib.fetchAPI('/archive/'+ this.params.day);
         if(!json) return yield next;
 
         const model = json;
@@ -82,7 +74,7 @@ www.archive = function*(next) {
 www.story = function*(next) {
 
     try {
-        const json = yield lib.fetch('/story/'+ this.params.storyid);
+        const json = yield lib.fetchAPI('/story/'+ this.params.storyid);
         if(!json) return yield next;
 
         const model = {story: json};
@@ -104,7 +96,7 @@ www.story = function*(next) {
 www.video = function*(next) {
 
     try {
-        const json = yield lib.fetch('/video/'+ this.params.videoid);
+        const json = yield lib.fetchAPI('/video/'+ this.params.videoid);
         if(!json) return yield next;
 
         const model = {video: json};
@@ -125,7 +117,7 @@ www.video = function*(next) {
 www.publisher = function*(next) {
     const publisherDomain = this.params.publisher.toLowerCase();
 
-    const json = yield lib.fetch('/publisher/'+publisherDomain);
+    const json = yield lib.fetchAPI('/publisher/'+publisherDomain);
     if(!json) return yield next;
 
     if(json.stories[0]) {
@@ -143,7 +135,7 @@ www.publisher = function*(next) {
 www.topvideo = function*(next) {
 
     try {
-        const json = yield lib.fetch('/topvideo');
+        const json = yield lib.fetchAPI('/topvideo');
         if(!json) return yield next;
 
         const model = {video: json};
@@ -164,7 +156,7 @@ www.topvideo = function*(next) {
 www.topstory = function*(next) {
 
     try {
-        const json = yield lib.fetch('/lead/'+ this.params.section);
+        const json = yield lib.fetchAPI('/lead/'+ this.params.section);
         if(!json) return yield next;
 
         const model = json;
