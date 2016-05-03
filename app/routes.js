@@ -3,15 +3,16 @@
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
 'use strict';
-var cache = require('koa-cache-lite');
+var cache     = require('koa-cache-lite');
 var CACHE_TTL = 0;
+
 if(process.env.NODE_ENV ==='production') {
     CACHE_TTL = 60 * 1000;
 }
 cache.configure({'/*': CACHE_TTL}, {debug: false});
 
 const router = require('koa-router')(); // router middleware for koa
-const www = require('./handlers.js');
+const www    = require('./handlers.js');
 
 router.use(cache.middleware());
 

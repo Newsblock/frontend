@@ -2,9 +2,9 @@
 'use strict';
 
 const moment = require('moment-timezone');
-const www = module.exports = {};
-const lib = require('./../lib/lib');
-const fetch = require('./../lib/fetch')();
+const www    = module.exports = {};
+const lib    = require('../lib/lib');
+const fetch  = require('../lib/fetch')();
 
 
 www.index = function*(next) {

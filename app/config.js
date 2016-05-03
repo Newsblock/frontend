@@ -2,17 +2,16 @@
 
 'use strict';
 
-const koa        = require('koa');            // koa framework
-const handlebars = require('koa-handlebars'); // handlebars templating
-const helmet     = require('koa-helmet');     // security header middleware
-const serve      = require('koa-static');     // static file serving middleware
-const lib        = require('./../lib/lib');
+const koa    = require('koa');            // koa framework
+const hbs    = require('koa-handlebars'); // handlebars templating
+const helmet = require('koa-helmet');     // security header middleware
+const serve  = require('koa-static');     // static file serving middleware
+const lib    = require('../lib/lib');
+const app    = module.exports = koa();
+
+// todo: logging
 //const bunyan     = require('bunyan');         // logging
 //const koaLogger  = require('koa-bunyan');     // logging
-
-const app = module.exports = koa();
-
-// logging
 //const access = { type: 'rotating-file', path: './logs/www-access.log', level: 'trace', period: '1d', count: 4 };
 //const error  = { type: 'rotating-file', path: './logs/www-error.log',  level: 'error', period: '1d', count: 4 };
 //const logger = bunyan.createLogger({ name: 'www', streams: [ access, error ] });
@@ -58,7 +57,7 @@ app.use(function* ctxSetMetaDefaults(next) {
 
 
 // handlebars templating
-app.use(handlebars({
+app.use(hbs({
     defaultLayout: 'main',
     cache: app.env !== 'development',
     extension:   ['html', 'handlebars', 'hbs'],
@@ -67,7 +66,6 @@ app.use(handlebars({
     layoutsDir: 'app/views/layouts',
     helpers: require('./helpers').config()
 }));
-
 
 // helmet security headers
 app.use(helmet());
