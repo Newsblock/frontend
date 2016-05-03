@@ -13,8 +13,7 @@
     "start": "forever --minUptime 1000 --spinSleepTime 1000 app.js",
     "start-dev": "nodemon -e js,json,html,handlebars app.js",
     "test": "mocha test/helpers.js",
-    "lint": "eslint --ignore-pattern apps/api/apidoc .",
-    "postinstall": "bower install"
+    "lint": "eslint --ignore-pattern apps/api/apidoc ."
   },
   "engines": {
     "node": "4.3.2"
