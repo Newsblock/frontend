@@ -13,7 +13,8 @@
     "start": "forever --minUptime 1000 --spinSleepTime 1000 app.js",
     "start-dev": "nodemon -e js,json,html,handlebars app.js",
     "test": "mocha test/helpers.js",
-    "lint": "eslint --ignore-pattern apps/api/apidoc ."
+    "lint": "eslint --ignore-pattern apps/api/apidoc .",
+    "postinstall": "bower install"
   },
   "engines": {
     "node": "4.3.2"
@@ -51,6 +52,7 @@
     "grunt-develop": "~0.4.0",
     "grunt-sass": "~1.0.0",
     "load-grunt-tasks": "~1.0.0",
+    "request": "^2.72.0",
     "time-grunt": "~1.0.0"
   },
   "eslintConfig": {
