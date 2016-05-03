@@ -23,6 +23,7 @@
     "co-bcrypt": "^1.0.0",
     "co-child-process": "^0.0.3",
     "co-fs": "^1.2.0",
+    "extend": "3.0.0",
     "forever": "^0.15.1",
     "koa": "^1.2.0",
     "koa-body": "^1.4.0",
