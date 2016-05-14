@@ -38,7 +38,8 @@
     "koa-response-time": "^1.0.2",
     "koa-router": "^5.4.0",
     "koa-static": "^2.0.0",
-    "moment-timezone": "0.5.3"
+    "moment-timezone": "0.5.3",
+    "typogr": "^0.6.6"
   },
   "devDependencies": {
     "eslint": "^2.3.0",

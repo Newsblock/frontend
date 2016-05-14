@@ -1,5 +1,6 @@
 'use strict';
 const moment = require('moment-timezone');
+const typogr = require('typogr');
 
 exports.linkHelper = function (text, url) {
   return "<a href='" + url + "'>" + text + "</a>";
@@ -305,4 +306,8 @@ exports.ifHasKeys = function (obj) {
 
 exports.roundThousands = function (num) {
   return Math.round(num / 1000) + 'k';
+};
+
+exports.typogrFormat = function(val) {
+  return typogr.smartypants(val);
 };
