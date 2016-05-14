@@ -13,7 +13,7 @@
     "start": "forever --minUptime 1000 --spinSleepTime 1000 app.js",
     "start-dev": "nodemon -e js,json,html,handlebars app.js",
     "test": "mocha test/helpers.js",
-    "lint": "eslint --ignore-pattern apps/api/apidoc ."
+    "lint": "eslint --fix --quiet --ignore-pattern public/ ."
   },
   "engines": {
     "node": "4.3.2"
@@ -25,6 +25,7 @@
     "co-fs": "^1.2.0",
     "extend": "3.0.0",
     "forever": "^0.15.1",
+    "glob": "7.0.3",
     "koa": "^1.2.0",
     "koa-body": "^1.4.0",
     "koa-cache-lite": "^3.3.3",
@@ -53,66 +54,5 @@
     "load-grunt-tasks": "~1.0.0",
     "request": "^2.72.0",
     "time-grunt": "~1.0.0"
-  },
-  "eslintConfig": {
-    "env": {
-      "node": true,
-      "es6": false,
-      "mocha": false
-    },
-    "extends": "eslint:recommended",
-    "rules": {
-      "comma-dangle": [
-        2,
-        "always-multiline"
-      ],
-      "curly": [
-        2,
-        "multi-line"
-      ],
-      "indent": [
-        2,
-        4,
-        {
-          "SwitchCase": 1
-        }
-      ],
-      "key-spacing": [
-        1,
-        {
-          "align": "value"
-        }
-      ],
-      "no-console": 1,
-      "no-const-assign": 2,
-      "no-redeclare": 1,
-      "no-shadow": 1,
-      "no-unused-vars": [
-        1,
-        {
-          "vars": "all",
-          "args": "after-used"
-        }
-      ],
-      "no-var": 2,
-      "object-curly-spacing": [
-        2,
-        "always"
-      ],
-      "prefer-const": 2,
-      "quotes": [
-        2,
-        "single",
-        "avoid-escape"
-      ],
-      "semi": [
-        1,
-        "always"
-      ],
-      "strict": [
-        2,
-        "global"
-      ]
-    }
   }
 }

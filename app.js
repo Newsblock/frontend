@@ -1,11 +1,10 @@
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
-'use strict';
 /* eslint no-shadow:0 *//* app is already declared in the upper scope */
 
-const koa          = require('koa');               // Koa framework
-const compose      = require('koa-compose');       // middleware composer
-const compress     = require('koa-compress');      // HTTP compression
+const koa = require('koa');               // Koa framework
+const compose = require('koa-compose');       // middleware composer
+const compress = require('koa-compress');      // HTTP compression
 const responseTime = require('koa-response-time'); // X-Response-Time middleware
+const config = require('./app/config.js').middleware;
 
 const app = module.exports = koa();
 
@@ -18,11 +17,10 @@ app.use(compress({}));
 app.keys = ['newsblock-www'];
 
 app.use(function* subApp() {
-    yield compose(require('./app/config.js').middleware);
+  yield compose(config);
 });
 
 if (!module.parent) {
-    /* eslint no-console: 0 */
-    app.listen(process.env.PORT||3000);
-    console.log(process.version+' listening on port '+(process.env.PORT||3000));
+  app.listen(process.env.PORT || 3000);
+  console.log(process.version+ ' listening on port ' +(process.env.PORT || 3000)); // eslint-disable-line
 }

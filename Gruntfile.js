@@ -3,12 +3,12 @@
 var request = require('request');
 
 module.exports = function (grunt) {
+  var reloadPort = 35729, files;
   // show elapsed time at the end
   require('time-grunt')(grunt);
   // load all grunt tasks
   require('load-grunt-tasks')(grunt);
 
-  var reloadPort = 35729, files;
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -42,10 +42,10 @@ module.exports = function (grunt) {
       },
       server: {
         files: [
-            'app/**/*.js',
-            'lib/**/*.js',
-            'Gruntfile.js',
-            'app.js'
+          'app/**/*.js',
+          'lib/**/*.js',
+          'Gruntfile.js',
+          'app.js'
         ],
         tasks: ['develop', 'delayed-livereload']
       },
@@ -72,14 +72,14 @@ module.exports = function (grunt) {
       }
     },
     uglify: {
-        options: {
-            mangle: false
-        },
-        inline_prod: {
-            files: {
-                'app/views/partials/mainjs.handlebars': ['public/scripts/main.js']
-            }
+      options: {
+        mangle: false
+      },
+      inline_prod: {
+        files: {
+          'app/views/partials/mainjs.handlebars': ['public/scripts/main.js']
         }
+      }
     }
   });
 
@@ -90,15 +90,15 @@ module.exports = function (grunt) {
   grunt.registerTask('delayed-livereload', 'Live reload after the node server has restarted.', function () {
     var done = this.async();
     setTimeout(function () {
-      request.get('http://localhost:' + reloadPort + '/changed?files=' + files.join(','),  function (err, res) {
-          var reloaded = !err && res.statusCode === 200;
-          if (reloaded) {
-            grunt.log.ok('Delayed live reload successful.');
-          } else {
-            grunt.log.error('Unable to make a delayed live reload.');
-          }
-          done(reloaded);
-        });
+      request.get('http://localhost:' + reloadPort + '/changed?files=' + files.join(','), function (err, res) {
+        var reloaded = !err && res.statusCode === 200;
+        if (reloaded) {
+          grunt.log.ok('Delayed live reload successful.');
+        } else {
+          grunt.log.error('Unable to make a delayed live reload.');
+        }
+        done(reloaded);
+      });
     }, 500);
   });
 

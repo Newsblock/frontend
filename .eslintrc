@@ -1,0 +1,26 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "env": {
+    "browser": false,
+    "mocha": true,
+    "node": true
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "vars-on-top": "error",
+    "handle-callback-err": "error",
+    "eqeqeq": "error",
+    "consistent-return": 2,
+    "indent": ["error", 2],
+    "no-else-return": 1,
+    "semi": [1, "always"],
+    "space-unary-ops": 2,
+    "no-sync": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "require-yield": "error"
+  }
+}
