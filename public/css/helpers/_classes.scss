@@ -105,4 +105,5 @@
   position: absolute;
 }
 
-@include generateRatios(16,9);
+@include generateRatios(16,9)
+@include generateRatios(84,64);
