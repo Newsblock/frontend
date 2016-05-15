@@ -1,5 +1,7 @@
 # Frontend for Newsblock.io
 
+[![Build Status](https://api.travis-ci.org/Newsblock/frontend.svg?branch=master)](https://travis-ci.org/Newsblock/frontend)
+
 ### The What 
 ![homepage](https://cloud.githubusercontent.com/assets/425966/14403941/f8e8151e-fe37-11e5-9f36-8fe9ae9b5a6d.png)
 
