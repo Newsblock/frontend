@@ -10,7 +10,7 @@
   },
   "main": "app.js",
   "scripts": {
-    "start": "forever --minUptime 1000 --spinSleepTime 1000 app.js",
+    "start": "node app.js",
     "start-dev": "nodemon -e js,json,html,handlebars app.js",
     "test": "mocha test",
     "lint": "eslint --fix --quiet --ignore-pattern public/ ."
@@ -25,7 +25,6 @@
     "co-child-process": "^0.0.3",
     "co-fs": "^1.2.0",
     "extend": "3.0.0",
-    "forever": "^0.15.1",
     "glob": "7.0.3",
     "koa": "^1.2.0",
     "koa-body": "^1.4.0",
@@ -38,7 +37,7 @@
     "koa-response-time": "^1.0.2",
     "koa-router": "^5.4.0",
     "koa-static": "^2.0.0",
-    "moment-timezone": "0.5.3",
+    "moment-timezone": "0.5.4",
     "typogr": "^0.6.6"
   },
   "devDependencies": {

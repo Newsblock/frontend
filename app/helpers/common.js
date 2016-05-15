@@ -149,21 +149,10 @@ exports.minutesFromNow = function (datevalue) {
 };
 
 exports.formatdate = function (datevalue) {
-  moment.locale('en', {
-    relativeTime: {
-      future: "in %s",
-      past: "%s ago",
-      s: "s",
-      m: "am",
-      mm: "%dm",
-      h: "1h",
-      hh: "%dh",
-      d: "1d",
-      dd: "%dd",
-      M: "amon",
-      MM: "%dmon",
-      y: "a y",
-      yy: "%d y"
+  moment.updateLocale('en', {
+    relativeTime: {future: "in %s", past: "%s ago", s: "s",
+      m: "am", mm: "%dm", h: "1h", hh: "%dh", d: "1d", dd: "%dd",
+      M: "amon", MM: "%dmon", y: "a y", yy: "%d y"
     }
   });
   return moment.utc(datevalue).fromNow();
