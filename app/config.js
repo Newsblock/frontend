@@ -73,7 +73,7 @@ app.use(helmet());
 // ------------ routing
 // serve static files (html, css, js); allow browser to cache for 1 hour
 app.use(serve('public', {maxage: 1000 * 60 * 60}));
-app.use(require('./routes.js'));
+app.use(require('./router.js'));
 
 
 // end of the line: 404 status for any resource not found

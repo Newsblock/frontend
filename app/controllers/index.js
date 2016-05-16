@@ -2,12 +2,12 @@
 'use strict';
 
 const moment = require('moment-timezone');
-const www = module.exports = {};
-const lib = require('../lib/lib');
-const fetch = require('../lib/fetch')();
+const controller = module.exports = {};
+const lib = require('../../lib/lib');
+const fetch = require('../../lib/fetch')();
 
 
-www.index = function *(next) {
+controller.index = function *(next) {
 
   let json = yield fetch.fetchFrom('cover_latest');
 
@@ -21,7 +21,7 @@ www.index = function *(next) {
   return yield this.render('index', model);
 };
 
-www.section = function*(next) {
+controller.section = function*(next) {
   var section = this.params.section.toLowerCase();
   let json = yield fetch.fetchFrom('section_' + section + '_latest');
 
@@ -33,27 +33,27 @@ www.section = function*(next) {
   return yield this.render('index', model);
 };
 
-www.about = function*() {
+controller.about = function*() {
   yield this.render('about', {section: 'About Us'});
 };
 
-www.live = function*() {
+controller.live = function*() {
   yield this.render('live', {section: 'Live'});
 };
 
-www.privacy = function*() {
+controller.privacy = function*() {
   yield this.render('privacy', {section: 'Privacy Policy'});
 };
 
 
-www.search = function*() {
+controller.search = function*() {
   const title = 'Search for ' + this.query.q;
   const meta = {title: title, socialTitle: title};
   yield this.render('search', {section: 'Search', meta: meta});
 };
 
 
-www.archive = function*(next) {
+controller.archive = function*(next) {
 
   if (this.params.day) {
     const json = yield fetch.fetchFrom('/archive/' + this.params.day, 'api');
@@ -72,7 +72,7 @@ www.archive = function*(next) {
   }
 };
 
-www.story = function*(next) {
+controller.story = function*(next) {
 
   try {
     const json = yield fetch.fetchFrom('/story/' + this.params.storyid, 'api');
@@ -94,7 +94,7 @@ www.story = function*(next) {
   }
 };
 
-www.video = function*(next) {
+controller.video = function*(next) {
 
   try {
     const json = yield fetch.fetchFrom('/video/' + this.params.videoid, 'api');
@@ -115,7 +115,7 @@ www.video = function*(next) {
   }
 };
 
-www.publisher = function*(next) {
+controller.publisher = function*(next) {
   const publisherDomain = this.params.publisher.toLowerCase();
 
   const json = yield fetch.fetchFrom('/publisher/' + publisherDomain, 'api');
@@ -133,7 +133,7 @@ www.publisher = function*(next) {
 };
 
 /* other handlers for social automation */
-www.topvideo = function*(next) {
+controller.topvideo = function*(next) {
 
   try {
     const json = yield fetch.fetchFrom('/topvideo', 'api');
@@ -154,7 +154,7 @@ www.topvideo = function*(next) {
   }
 };
 
-www.topstory = function*(next) {
+controller.topstory = function*(next) {
 
   try {
     const json = yield fetch.fetchFrom('/lead/' + this.params.section, 'api');
