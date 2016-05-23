@@ -300,3 +300,18 @@ exports.roundThousands = function (num) {
 exports.typogrFormat = function(val) {
   return typogr.smartypants(val);
 };
+
+exports.assetPath = function (path) {
+  if (process.env.NODE_ENV === 'production') {
+    try {
+      var revManifest = require('../../dist/public/rev-manifest.json');
+      return revManifest[path];
+    }
+    catch (ex) {
+      return path;
+    }
+  }
+  else {
+    return path;
+  }
+};

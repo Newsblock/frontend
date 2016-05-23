@@ -55,15 +55,21 @@ app.use(function* ctxSetMetaDefaults(next) {
   yield next;
 });
 
+var assetsDir = 'public';
+var viewsDir = 'app/views';
+if (process.env.NODE_ENV === 'production') {
+  assetsDir = 'dist/public';
+  viewsDir = 'dist/views';
+}
 
 // handlebars templating
 app.use(hbs({
   defaultLayout: 'main',
   cache: app.env !== 'development',
   extension: ['html', 'handlebars', 'hbs'],
-  viewsDir: 'app/views',
-  partialsDir: 'app/views/partials',
-  layoutsDir: 'app/views/layouts',
+  viewsDir: viewsDir,
+  partialsDir: viewsDir+'/partials',
+  layoutsDir: viewsDir+'/layouts',
   helpers: require('./helpers').config()
 }));
 
@@ -72,9 +78,8 @@ app.use(helmet());
 
 // ------------ routing
 // serve static files (html, css, js); allow browser to cache for 1 hour
-app.use(serve('public', {maxage: 1000 * 60 * 60}));
+app.use(serve(assetsDir, {maxage: 1000 * 60 * 60}));
 app.use(require('./router.js'));
-
 
 // end of the line: 404 status for any resource not found
 app.use(function* notFound(next) {

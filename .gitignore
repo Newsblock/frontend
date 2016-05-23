@@ -3,3 +3,5 @@ node_modules/
 public/components/
 npm-debug.log
 dist/
+public/css/style.css
+public/css/style.css.map

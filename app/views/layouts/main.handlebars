@@ -28,12 +28,7 @@
 {{> siteAfterfooter}}
 
 <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-
-{{#if devmode}}
-    <script src="/scripts/main.js"></script>
-{{else}}
-    <script>{{> mainjs}}</script>
-{{/if}}
+<script async src="{{assetPath 'scripts/main.js'}}"></script>
 
 <noscript>
     <div style="display:none;">
