@@ -28,7 +28,7 @@ gulp.task('nodemon', function (cb) {
   var called = false;
   return nodemon({
     script: 'app.js',
-    ext: 'hbs, json, js',
+    ext: 'hbs, handlebars, json, js, html',
     watch: ['app.js', './app']
   })
     .on('start', function onStart() {
@@ -132,10 +132,8 @@ gulp.task('rev',['uglify-js'], function () {
     .pipe(gulp.dest(paths.distPublic)); // write manifest to build dir
 });
 
-gulp.task('default', ['browser-sync','bundle-js', 'styles'], function () {
-  gulp.watch(['public/scripts/*.js', 'public/scripts/modules/*.js', 'public/data/*.json'], ['bundle-js', browserSync.reload]);
-  gulp.watch('public/css/**/*.scss',  ['styles']);
-  gulp.watch('public/**/*.html', ['bs-reload']);
+gulp.task('default', ['browser-sync','styles'], function () {
+  gulp.watch(['public/**/{*.js,*.scss}'], ['styles', 'bs-reload']);
 });
 
 gulp.task('build', gulpSequence('bundle-css','dist-copy','rev'));
