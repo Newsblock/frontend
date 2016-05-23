@@ -10,15 +10,14 @@
 $ git clone git@github.com:Newsblock/frontend.git
 ```
 
-### Get running
+### Get running locally
 
 ```
 $ npm install
-$ bower install
-$ grunt
+$ gulp
 ```
 
-open http://localhost:3000
+open http://localhost:4000
 
 ### Hosting
 Easy to host on Heroku
@@ -26,5 +25,6 @@ Easy to host on Heroku
 ```
 $ heroku login
 $ heroku create
+$ heroku config:set NPM_CONFIG_PRODUCTION=false
 $ git push heroku master
 ```
