@@ -308,7 +308,7 @@ exports.assetPath = function (path) {
   }
 
   try {
-    var revManifest = require('../../dist/public/rev-manifest.json');
+    var revManifest = require('../../dist/rev-manifest.json');
     return revManifest[path];
   }
   catch (ex) {
@@ -323,7 +323,7 @@ exports.cssPath = function (path) {
   }
 
   try {
-    var revManifest = require('../../dist/public/css-manifest.json');
+    var revManifest = require('../../dist/css-manifest.json');
     return revManifest[path];
   }
   catch (ex) {

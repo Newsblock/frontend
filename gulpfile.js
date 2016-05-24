@@ -110,10 +110,9 @@ gulp.task('clean', function() {
   return del(['dist']);
 });
 
-//gulp.task('dist-copy', function () {
-//  gulp.src('./public/font/*').pipe(gulp.dest('dist/font'));
-//  return gulp.src('./public/css/*').pipe(gulp.dest('dist/css'));
-//});
+gulp.task('dist-fonts', function () {
+  return gulp.src('./public/font/*').pipe(gulp.dest('dist/font'));
+});
 
 gulp.task('rev-css', function () {
   return gulp.src('public/**/*.css')
@@ -137,6 +136,6 @@ gulp.task('default', ['browser-sync','styles','bundle-js'], function () {
   gulp.watch(['public/**/*.js'], ['bundle-js', 'bs-reload']);
 });
 
-gulp.task('build', gulpSequence('bundle-css','rev-css','bundle-js','rev-js'));
+gulp.task('build', gulpSequence('bundle-css','rev-css','bundle-js','rev-js','dist-fonts'));
 
 gulp.task('local-build', gulpSequence('clean','build'));

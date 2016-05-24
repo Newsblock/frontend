@@ -58,7 +58,7 @@ app.use(function* ctxSetMetaDefaults(next) {
 var assetsDir = 'public';
 var viewsDir = 'app/views';
 if (process.env.NODE_ENV === 'production') {
-  assetsDir = 'dist/public';
+  assetsDir = 'dist';
 }
 
 // handlebars templating
