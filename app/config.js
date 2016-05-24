@@ -59,7 +59,6 @@ var assetsDir = 'public';
 var viewsDir = 'app/views';
 if (process.env.NODE_ENV === 'production') {
   assetsDir = 'dist/public';
-  viewsDir = 'dist/views';
 }
 
 // handlebars templating

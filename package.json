@@ -50,6 +50,7 @@
     "eslint": "^2.3.0",
     "event-stream": "^3.3.2",
     "gulp": "^3.9.0",
+    "gulp-concat": "2.6.0",
     "gulp-csslint": "^0.3.0",
     "gulp-cssnano": "^2.1.1",
     "gulp-nodemon": "^2.0.6",

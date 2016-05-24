@@ -302,16 +302,31 @@ exports.typogrFormat = function(val) {
 };
 
 exports.assetPath = function (path) {
-  if (process.env.NODE_ENV === 'production') {
-    try {
-      var revManifest = require('../../dist/public/rev-manifest.json');
-      return revManifest[path];
-    }
-    catch (ex) {
-      return path;
-    }
+
+  if (process.env.NODE_ENV !== 'production') {
+    return path;
   }
-  else {
+
+  try {
+    var revManifest = require('../../dist/public/rev-manifest.json');
+    return revManifest[path];
+  }
+  catch (ex) {
+    return path;
+  }
+};
+
+exports.cssPath = function (path) {
+
+  if (process.env.NODE_ENV !== 'production') {
+    return path;
+  }
+
+  try {
+    var revManifest = require('../../dist/public/css-manifest.json');
+    return revManifest[path];
+  }
+  catch (ex) {
     return path;
   }
 };
