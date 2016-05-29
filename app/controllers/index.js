@@ -11,7 +11,7 @@ controller.index = function *(next) {
 
   let json = yield fetch.fetchFrom('cover_latest');
 
-  if (json.error) {
+  if (!json) {
     return yield next;
   }
 
@@ -98,7 +98,7 @@ controller.video = function*(next) {
 
   try {
     const json = yield fetch.fetchFrom('/video/' + this.params.videoid, 'api');
-    if (!json) return yield next;
+    if (!json || !json.videoId) return yield next;
 
     const model = {video: json};
 

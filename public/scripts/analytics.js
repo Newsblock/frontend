@@ -1,8 +1,8 @@
 
 (function () {
   var addthisScript = document.createElement('script');
-  addthisScript.setAttribute('src', 'http://s7.addthis.com/js/300/addthis_widget.js#domready=1')
-  document.body.appendChild(addthisScript)
+  addthisScript.setAttribute('src', '//s7.addthis.com/js/300/addthis_widget.js#domready=1')
+  document.body.appendChild(addthisScript);
   var addthis_config = addthis_config || {};
   addthis_config.pubid = 'ra-54d413a56139be0c';
 })();

@@ -2,20 +2,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{#if meta.title}}{{{meta.title}}}{{else}}Latest News Headlines and Videos{{/if}} - Newsblock </title>
-  <link rel="canonical" href="http://newsblock.io{{routepath}}" />
-  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://cdn.getnewsblock.com/icons/apple-touch-icon-57x57.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://cdn.getnewsblock.com/icons/apple-touch-icon-114x114.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://cdn.getnewsblock.com/icons/apple-touch-icon-72x72.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://cdn.getnewsblock.com/icons/apple-touch-icon-144x144.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="http://cdn.getnewsblock.com/icons/apple-touch-icon-60x60.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="http://cdn.getnewsblock.com/icons/apple-touch-icon-120x120.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="http://cdn.getnewsblock.com/icons/apple-touch-icon-76x76.png" />
-  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="http://cdn.getnewsblock.com/icons/apple-touch-icon-152x152.png" />
+  <link rel="canonical" href="https://newsblock.io{{routepath}}" />
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="//cdn.getnewsblock.com/icons/apple-touch-icon-57x57.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="//cdn.getnewsblock.com/icons/apple-touch-icon-114x114.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="//cdn.getnewsblock.com/icons/apple-touch-icon-72x72.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="//cdn.getnewsblock.com/icons/apple-touch-icon-144x144.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="60x60" href="//cdn.getnewsblock.com/icons/apple-touch-icon-60x60.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="120x120" href="//cdn.getnewsblock.com/icons/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="76x76" href="//cdn.getnewsblock.com/icons/apple-touch-icon-76x76.png" />
+  <link rel="apple-touch-icon-precomposed" sizes="152x152" href="//cdn.getnewsblock.com/icons/apple-touch-icon-152x152.png" />
   <!--<link rel="icon" type="image/png" href="http://cdn.getnewsblock.com/icons/favicon-196x196.png" sizes="196x196" />-->
   <!--<link rel="icon" type="image/png" href="http://cdn.getnewsblock.com/icons/favicon-96x96.png" sizes="96x96" />-->
   <!--<link rel="icon" type="image/png" href="http://cdn.getnewsblock.com/icons/favicon-32x32.png" sizes="32x32" />-->
   <!--<link rel="icon" type="image/png" href="http://cdn.getnewsblock.com/icons/favicon-16x16.png" sizes="16x16" />-->
-  <link rel="icon" type="image/png" href="http://cdn.getnewsblock.com/icons/favicon-128.png" sizes="128x128" />
+  <link rel="icon" type="image/png" href="//cdn.getnewsblock.com/icons/favicon-128.png" sizes="128x128" />
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
   <meta name="application-name" content="&nbsp;"/>
   <meta name="msapplication-TileColor" content="#FFFFFF" />
@@ -42,7 +45,7 @@
   {{!--<link rel="stylesheet" href="//cdn.jsdelivr.net/weather-icons/0.0.1/css/weather-icons.min.css"/>--}}
   <link rel="stylesheet" href="/{{cssPath 'css/style.css'}}">
   <noscript>
-    <link href='http://fonts.googleapis.com/css?family=Source+Serif+Pro:700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Source+Serif+Pro:700' rel='stylesheet' type='text/css'>
   </noscript>
 <script type="text/javascript" id="gretaScript" src="https://cdn.greta.io/greta.min.js" data-lazy="true" data-ac="abb45ea61feb3c6cc685558c55e5adc8"></script>
 {{#if devmode}}
@@ -66,4 +69,6 @@
     <script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
   <![endif]-->
 {{> webfontconfig}}
+
+    <link rel="manifest" href="mobile-manifest.json">
 </head>

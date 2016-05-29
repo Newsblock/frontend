@@ -1,0 +1,22 @@
+{
+  "lang": "en",
+  "background_color": "#9e9e9e",
+  "name": "Newsblock - Latest News Headlines and Videos",
+  "short_name": "Newsblock",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "http://cdn.getnewsblock.com/icons/apple-touch-icon-144x144.png",
+      "type": "image/png",
+      "sizes": "144x144",
+      "actualSize": "144x144"
+    },
+    {
+      "src": "http://cdn.getnewsblock.com/icons/apple-touch-icon-152x152.png",
+      "type": "image/png",
+      "sizes": "152x152",
+      "actualSize": "152x152"
+    }
+  ],
+  "orientation": "portrait"
+}

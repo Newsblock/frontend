@@ -15,7 +15,7 @@ exports.faviconUrl = function (domain) {
   if (domain) {
     host = domain.replace('http://', '');
   }
-  return 'http://icons.duckduckgo.com/ip2/' + host + '.ico';
+  return '//icons.duckduckgo.com/ip2/' + host + '.ico';
 };
 
 exports.publisherUrl = function (domain) {
@@ -34,7 +34,7 @@ exports.imgUrl = function (story) {
   }
 
   if (story.importedImg) {
-    url = 'http://cdn.getnewsblock.com/images/' + story._id;
+    url = '//cdn.getnewsblock.com/images/' + story._id;
   }
   return url;
 };
