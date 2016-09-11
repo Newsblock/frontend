@@ -34,6 +34,9 @@
   <meta property="og:url" content="https://newsblock.io{{routepath}}" />
   <meta property="og:type" content="article" />
   <meta property="og:image" content="{{meta.image}}" />
+  {{#if video}}
+      <meta property='og:video' content='https://www.youtube.com/v/{{video.videoId}}' />
+  {{/if}}
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@getnewsblock" />
   <meta name="twitter:title" content="{{meta.socialTitle}}" />
