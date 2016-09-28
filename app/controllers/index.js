@@ -76,7 +76,8 @@ controller.story = function*(next) {
 
   try {
     const json = yield fetch.fetchFrom('/story/' + this.params.storyid, 'api');
-    if (!json) return yield next;
+
+    if (!json || !json.id) return yield next;
 
     const model = {story: json};
 
@@ -86,7 +87,6 @@ controller.story = function*(next) {
       model.ampurl = json.ampurl.replace('http://', '').replace('https://', '');
     }
 
-    //console.log('$$', model.meta);
     return yield this.render('story', model);
 
   } catch (e) {
@@ -119,7 +119,7 @@ controller.publisher = function*(next) {
   const publisherDomain = this.params.publisher.toLowerCase();
 
   const json = yield fetch.fetchFrom('/publisher/' + publisherDomain, 'api');
-  if (!json) return yield next;
+  if (!json || !json.stories) return yield next;
 
   if (json.stories[0]) {
     json.meta = lib.overrideMetaFor(this, 'publisher', json);
