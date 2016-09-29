@@ -77,7 +77,7 @@ controller.story = function*(next) {
   try {
     const json = yield fetch.fetchFrom('/story/' + this.params.storyid, 'api');
 
-    if (!json || !json.id) return yield next;
+    if (!json || !json._id) return yield next;
 
     const model = {story: json};
 
