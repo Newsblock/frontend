@@ -11,7 +11,6 @@
             {{>imgFavicon story}}<strong itemprop="publisher">{{story.publisher}}</strong></a>
             <time datetime="{{datetime story.published}}" itemprop="datePublished">{{formatdate story.published}}</time>
         </p>
-      {{> addthis}}
     </header>
     <div itemprop="articleBody">
         <a title="{{story.headline}}" href="{{story.url}}"><img class="img-responsive article--art" src="{{story.image}}" itemprop="image"/></a>
